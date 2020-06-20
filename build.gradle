@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'dev.rednas.moodle'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.junit.jupiter:junit-jupiter:5.6.2'
+}
+
+test {
+    useJUnitPlatform()
+}
