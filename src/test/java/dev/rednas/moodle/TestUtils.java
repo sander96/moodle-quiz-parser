@@ -15,9 +15,11 @@ public class TestUtils {
     /**
      * Reads an HTML file from test resources folder.
      */
-    public static String readHtml(String filename) {
+    public static String readHtml(String... filePath) {
+        String htmlFilePath = String.join("/", filePath);
+
         try {
-            Path path = Paths.get(TestUtils.class.getResource("/html/" + filename).toURI());
+            Path path = Paths.get(TestUtils.class.getResource("/html/" + htmlFilePath).toURI());
             return new String(Files.readAllBytes(path));
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
