@@ -21,5 +21,7 @@ jobs:
         java-version: 11
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+    - name: Download Moodle localization files
+      run: ./gradlew setupMoodleLangpacks
     - name: Build
       run: ./gradlew build

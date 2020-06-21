@@ -12,7 +12,7 @@ class QuizParserTest {
 
     @Test
     void parse() {
-        String html = TestUtils.readHtml("full1.html");
+        String html = TestUtils.readHtml("full", "full1.html");
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
