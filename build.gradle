@@ -31,7 +31,7 @@ task setupMoodleLangpacks {
         for (File file : files) {
             println(file.path)
             copy {
-                from zipTree(file.path).matching { include '*/question.php' }
+                from zipTree(file.path).matching { include '*/question.php', '*/qtype_truefalse.php' }
                 into 'src/main/resources/langpack/'
             }
             file.delete()
