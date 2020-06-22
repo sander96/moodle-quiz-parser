@@ -1,5 +1,6 @@
 package dev.rednas.moodle.parser;
 
+import dev.rednas.moodle.language.LanguageComponent;
 import dev.rednas.moodle.language.LanguageUtils;
 import dev.rednas.moodle.question.Question;
 import dev.rednas.moodle.question.QuestionGrade;
@@ -85,7 +86,7 @@ public class QuizParser {
 
     private static String parseQuestionState(Element infoElement) {
         String state = infoElement.select("div.info > div.state").text();
-        return LanguageUtils.getIdentifier(state);
+        return LanguageUtils.getIdentifier(state, LanguageComponent.QUESTION);
     }
 
     private static QuestionGrade parseGrade(Element infoElement) {

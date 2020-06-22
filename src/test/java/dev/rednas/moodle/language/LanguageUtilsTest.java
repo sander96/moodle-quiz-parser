@@ -8,10 +8,10 @@ class LanguageUtilsTest {
 
     @Test
     void getIdentifier() {
-        String identifier1 = LanguageUtils.getIdentifier("Attempt finished submitting:");
+        String identifier1 = LanguageUtils.getIdentifier("Attempt finished submitting:", LanguageComponent.QUESTION);
         assertEquals("attemptfinishedsubmitting", identifier1);
 
-        String identifier2 = LanguageUtils.getIdentifier("Action");
+        String identifier2 = LanguageUtils.getIdentifier("Action", LanguageComponent.QUESTION);
         assertEquals("action", identifier2);
     }
 
@@ -22,7 +22,16 @@ class LanguageUtilsTest {
                 "*  Error if grade not listed - If a question contains any grades not found in the list an error is displayed and that question will not be imported\n" +
                 "* Nearest grade if not listed - If a grade is found that does not match a value in the list, the grade is changed to the closest matching value in the list";
 
-        String identifier = LanguageUtils.getIdentifier(localizedString);
+        String identifier = LanguageUtils.getIdentifier(localizedString, LanguageComponent.QUESTION);
         assertEquals("matchgrades_help", identifier);
+    }
+
+    @Test
+    void getTruefalseIdentifier() {
+        String identifierQuestion = LanguageUtils.getIdentifier("Feedback for the response 'False'.", LanguageComponent.QUESTION);
+        assertNull(identifierQuestion);
+
+        String identifierTruefalse = LanguageUtils.getIdentifier("Feedback for the response 'False'.", LanguageComponent.QTYPE_TRUEFALSE);
+        assertEquals("feedbackfalse", identifierTruefalse);
     }
 }
