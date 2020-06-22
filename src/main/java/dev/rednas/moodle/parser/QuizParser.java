@@ -2,10 +2,7 @@ package dev.rednas.moodle.parser;
 
 import dev.rednas.moodle.language.LanguageComponent;
 import dev.rednas.moodle.language.LanguageUtils;
-import dev.rednas.moodle.question.Question;
-import dev.rednas.moodle.question.QuestionGrade;
-import dev.rednas.moodle.question.QuestionInfo;
-import dev.rednas.moodle.question.QuestionType;
+import dev.rednas.moodle.question.*;
 import dev.rednas.moodle.quiz.Quiz;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -43,17 +40,10 @@ public class QuizParser {
 
     private static Question parseQuestion(Element questionElement) {
         QuestionType questionType = parseQuestionType(questionElement);
+        Element contentElement = questionElement.selectFirst("div.que > div.content");
+        Question question = QuestionFactory.create(questionType, contentElement);
 
         QuestionInfo questionInfo = parseQuestionInfo(questionElement);
-
-        Element contentElement = questionElement.selectFirst("div.que > .content");
-
-        Element outcomeElement = questionElement.selectFirst("div.que > outcome");
-        Element commentElement = questionElement.selectFirst("div.que > comment");
-        Element historyElement = questionElement.selectFirst("div.que > history");
-
-        Question question = new Question();
-        question.setType(questionType);
         question.setInfo(questionInfo);
 
         return question;
@@ -68,7 +58,7 @@ public class QuizParser {
     }
 
     private static QuestionInfo parseQuestionInfo(Element questionElement) {
-        Element infoElement = questionElement.selectFirst("div.que > .info");
+        Element infoElement = questionElement.selectFirst("div.que > div.info");
         QuestionInfo questionInfo = new QuestionInfo();
         questionInfo.setNumber(parseQuestionNumber(infoElement));
         questionInfo.setState(parseQuestionState(infoElement));
@@ -106,6 +96,9 @@ public class QuizParser {
 
         if (matcher.find()) {
             grade.setMax(matcher.group(0));
+        } else {
+            grade.setMax(grade.getMark());
+            grade.setMark(null);
         }
 
         return grade;

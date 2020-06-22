@@ -1,4 +1,4 @@
-package dev.rednas.moodle;
+package dev.rednas.moodle.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
