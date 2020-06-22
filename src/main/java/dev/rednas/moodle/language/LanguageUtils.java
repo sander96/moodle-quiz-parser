@@ -18,8 +18,8 @@ public class LanguageUtils {
     private static final Map<String, Map<String, String>> LOCALIZED_STRING_MAP = initialize();
 
     public static String getIdentifier(String localizedString) {
-        for (Map<String, String> value : LOCALIZED_STRING_MAP.values()) {
-            String identifier = value.get(localizedString);
+        for (Map<String, String> languageMap : LOCALIZED_STRING_MAP.values()) {
+            String identifier = languageMap.get(localizedString);
             if (identifier != null) {
                 return identifier;
             }

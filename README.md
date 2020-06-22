@@ -1,4 +1,4 @@
-# Moodle test parser
+# Moodle quiz parser
 
 ## Environment setup
 
