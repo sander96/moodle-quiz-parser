@@ -1,6 +1,9 @@
 package dev.rednas.moodle.parser;
 
+import dev.rednas.moodle.language.LanguageUtils;
 import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.QuestionGrade;
+import dev.rednas.moodle.question.QuestionInfo;
 import dev.rednas.moodle.question.QuestionType;
 import dev.rednas.moodle.quiz.Quiz;
 import lombok.AccessLevel;
@@ -11,7 +14,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class QuizParser {
@@ -39,8 +43,8 @@ public class QuizParser {
     private static Question parseQuestion(Element questionElement) {
         QuestionType questionType = parseQuestionType(questionElement);
 
+        QuestionInfo questionInfo = parseQuestionInfo(questionElement);
 
-        Element infoElement = questionElement.selectFirst("div.que > .info");
         Element contentElement = questionElement.selectFirst("div.que > .content");
 
         Element outcomeElement = questionElement.selectFirst("div.que > outcome");
@@ -48,7 +52,8 @@ public class QuizParser {
         Element historyElement = questionElement.selectFirst("div.que > history");
 
         Question question = new Question();
-        question.setQuestionType(questionType);
+        question.setType(questionType);
+        question.setInfo(questionInfo);
 
         return question;
     }
@@ -59,6 +64,50 @@ public class QuizParser {
         iterator.next();
         String questionType = iterator.next();
         return QuestionType.valueOf(questionType.toUpperCase());
+    }
+
+    private static QuestionInfo parseQuestionInfo(Element questionElement) {
+        Element infoElement = questionElement.selectFirst("div.que > .info");
+        QuestionInfo questionInfo = new QuestionInfo();
+        questionInfo.setNumber(parseQuestionNumber(infoElement));
+        questionInfo.setState(parseQuestionState(infoElement));
+        questionInfo.setGrade(parseGrade(infoElement));
+        return questionInfo;
+    }
+
+    private static Long parseQuestionNumber(Element infoElement) {
+        Elements questionNumberElement = infoElement.select("div.info > h3.no > span.qno");
+        if (questionNumberElement.isEmpty()) {
+            return null;
+        }
+        return Long.valueOf(questionNumberElement.text());
+    }
+
+    private static String parseQuestionState(Element infoElement) {
+        String state = infoElement.select("div.info > div.state").text();
+        return LanguageUtils.getIdentifier(state);
+    }
+
+    private static QuestionGrade parseGrade(Element infoElement) {
+        Elements gradeElements = infoElement.select("div.info > div.grade");
+        if (gradeElements.isEmpty()) {
+            return null;
+        }
+
+        Pattern pattern = Pattern.compile("(\\d+[,.]*\\d+)", Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(gradeElements.text());
+
+        QuestionGrade grade = new QuestionGrade();
+
+        if (matcher.find()) {
+            grade.setMark(matcher.group(0));
+        }
+
+        if (matcher.find()) {
+            grade.setMax(matcher.group(0));
+        }
+
+        return grade;
     }
 
 }

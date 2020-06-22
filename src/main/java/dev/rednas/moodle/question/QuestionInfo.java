@@ -3,8 +3,8 @@ package dev.rednas.moodle.question;
 import lombok.Data;
 
 @Data
-public class Question {
-    private QuestionType type;
-    private QuestionInfo info;
+public class QuestionInfo {
+    private Long number;
+    private String state;
     private QuestionGrade grade;
 }

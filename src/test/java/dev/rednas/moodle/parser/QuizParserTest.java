@@ -5,6 +5,8 @@ import dev.rednas.moodle.question.Question;
 import dev.rednas.moodle.question.QuestionType;
 import dev.rednas.moodle.quiz.Quiz;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,6 +19,21 @@ class QuizParserTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        assertEquals(QuestionType.TRUEFALSE, question.getQuestionType());
+        assertEquals(QuestionType.TRUEFALSE, question.getType());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"en", "et"})
+    void parseLocalisationStrings(String language) {
+        String html = TestUtils.readHtml("language", language + "1.html");
+        Quiz quiz = QuizParser.parse(html);
+        assertEquals(1, quiz.getQuestions().size());
+
+        Question question = quiz.getQuestions().get(0);
+        assertEquals(QuestionType.TRUEFALSE, question.getType());
+        assertEquals(1L, question.getInfo().getNumber());
+        assertEquals("correct", question.getInfo().getState());
+        assertEquals("1.00", question.getInfo().getGrade().getMax());
+        assertEquals("1.00", question.getInfo().getGrade().getMark());
     }
 }
