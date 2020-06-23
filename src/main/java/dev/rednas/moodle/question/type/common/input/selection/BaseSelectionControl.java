@@ -10,6 +10,7 @@ import lombok.Setter;
 public abstract class BaseSelectionControl extends BaseInput {
     private String label;
     private boolean selected;
+    private Boolean correct;
 
     public BaseSelectionControl(InputType type) {
         super(type);

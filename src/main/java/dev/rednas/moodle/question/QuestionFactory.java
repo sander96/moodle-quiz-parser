@@ -1,5 +1,6 @@
 package dev.rednas.moodle.question;
 
+import dev.rednas.moodle.question.type.match.MatchQuestion;
 import dev.rednas.moodle.question.type.shortanswer.ShortanswerQuestion;
 import dev.rednas.moodle.question.type.truefalse.TrueFalseQuestion;
 import lombok.AccessLevel;
@@ -14,6 +15,8 @@ public class QuestionFactory {
             return TrueFalseQuestion.createInstance(contentElement);
         } else if (QuestionType.SHORTANSWER.equals(type)) {
             return ShortanswerQuestion.createInstance(contentElement);
+        } else if (QuestionType.MATCH.equals(type)) {
+            return MatchQuestion.createInstance(contentElement);
         }
         throw new RuntimeException(type + " question type is not implemented yet");
     }

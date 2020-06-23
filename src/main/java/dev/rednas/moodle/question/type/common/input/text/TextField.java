@@ -10,6 +10,7 @@ import lombok.Setter;
 public class TextField extends BaseInput {
     private String label;
     private String value;
+    private Boolean correct;    // TODO this can be partially correct?
 
     public TextField() {
         super(InputType.TEXT);

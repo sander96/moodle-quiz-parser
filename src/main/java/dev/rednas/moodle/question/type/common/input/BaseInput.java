@@ -6,5 +6,4 @@ import lombok.Data;
 public abstract class BaseInput {
     private String id;
     private final InputType type;
-    private Boolean correct;
 }
