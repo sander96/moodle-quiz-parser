@@ -1,5 +1,6 @@
 package dev.rednas.moodle.question;
 
+import dev.rednas.moodle.question.type.shortanswer.ShortanswerQuestion;
 import dev.rednas.moodle.question.type.truefalse.TrueFalseQuestion;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,8 @@ public class QuestionFactory {
     public static Question create(QuestionType type, Element contentElement) {
         if (QuestionType.TRUEFALSE.equals(type)) {
             return TrueFalseQuestion.createInstance(contentElement);
+        } else if (QuestionType.SHORTANSWER.equals(type)) {
+            return ShortanswerQuestion.createInstance(contentElement);
         }
         throw new RuntimeException(type + " question type is not implemented yet");
     }
