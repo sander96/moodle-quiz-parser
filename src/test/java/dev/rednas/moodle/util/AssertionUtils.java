@@ -2,8 +2,12 @@ package dev.rednas.moodle.util;
 
 import dev.rednas.moodle.question.Question;
 import dev.rednas.moodle.question.QuestionType;
+import dev.rednas.moodle.question.type.common.input.dropdown.Dropdown;
+import dev.rednas.moodle.question.type.common.input.dropdown.Option;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,5 +21,18 @@ public class AssertionUtils {
         assertEquals(number, question.getInfo().getNumber());
         assertEquals(state, question.getInfo().getState());
         assertEquals(questionType, question.getType());
+    }
+
+    public static void assertOption(Option option, String text, String value, boolean selected) {
+        assertEquals(text, option.getText());
+        assertEquals(value, option.getValue());
+        assertEquals(selected, option.isSelected());
+    }
+
+    public static void assertDropdownOptions(Dropdown dropdown, int selectedIndex, List<String> optionStrings) {
+        List<Option> options = dropdown.getOptions();
+        for (int i = 0; i < options.size(); i++) {
+            AssertionUtils.assertOption(options.get(i), optionStrings.get(i), String.valueOf(i), i == selectedIndex);
+        }
     }
 }
