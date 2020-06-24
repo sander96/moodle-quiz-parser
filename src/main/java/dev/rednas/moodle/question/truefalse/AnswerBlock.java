@@ -1,4 +1,4 @@
-package dev.rednas.moodle.question.type.truefalse;
+package dev.rednas.moodle.question.truefalse;
 
 import lombok.Data;
 

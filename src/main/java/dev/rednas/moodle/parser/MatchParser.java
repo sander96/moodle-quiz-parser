@@ -1,34 +1,25 @@
-package dev.rednas.moodle.question.type.match;
+package dev.rednas.moodle.parser;
 
-import dev.rednas.moodle.question.Question;
-import dev.rednas.moodle.question.QuestionType;
-import dev.rednas.moodle.question.type.common.input.dropdown.Dropdown;
-import dev.rednas.moodle.question.type.common.input.dropdown.Option;
-import lombok.Getter;
-import lombok.Setter;
+import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
+import dev.rednas.moodle.question.common.input.dropdown.Option;
+import dev.rednas.moodle.question.match.MatchQuestion;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-public class MatchQuestion extends Question {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class MatchParser {
 
-    private String questionText;
-    private List<Dropdown> dropdowns = new ArrayList<>();
-
-    private MatchQuestion() {
-        super(QuestionType.MATCH);
-    }
-
-    public static MatchQuestion createInstance(Element contentElement) {
+    public static MatchQuestion parse(Element contentElement) {
         Elements formulationElement = contentElement.select("div.content > div.formulation");
         MatchQuestion question = new MatchQuestion();
-        question.questionText = formulationElement.select("div.qtext").first().text();
+        question.setQuestionText(formulationElement.select("div.qtext").first().text());
 
-        question.dropdowns = parseTable(contentElement);
+        question.setDropdowns(parseTable(contentElement));
 
         return question;
     }

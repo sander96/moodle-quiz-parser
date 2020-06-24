@@ -1,9 +1,8 @@
-package dev.rednas.moodle.question.type.match;
+package dev.rednas.moodle.question.match;
 
 import dev.rednas.moodle.parser.QuizParser;
 import dev.rednas.moodle.question.Question;
-import dev.rednas.moodle.question.QuestionType;
-import dev.rednas.moodle.question.type.common.input.dropdown.Dropdown;
+import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
@@ -22,8 +21,7 @@ class MatchQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, null, "1.00",
-                1L, "notyetanswered", QuestionType.MATCH);
+        AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
         assertEquals("This question is to test your fruit color knowledge.", matchQuestion.getQuestionText());
@@ -50,8 +48,7 @@ class MatchQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "0.00", "1.00",
-                1L, "incorrect", QuestionType.MATCH);
+        AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
         assertEquals("This question is to test your fruit color knowledge.", matchQuestion.getQuestionText());
@@ -78,8 +75,7 @@ class MatchQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "1.00", "1.00",
-                1L, "correct", QuestionType.MATCH);
+        AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
         assertEquals("This question is to test your fruit color knowledge.", matchQuestion.getQuestionText());
@@ -106,8 +102,7 @@ class MatchQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "0.50", "1.00",
-                1L, "partiallycorrect", QuestionType.MATCH);
+        AssertionUtils.assertQuestionInfo(question, "0.50", "1.00", 1L, "partiallycorrect");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
         assertEquals("This question is to test your fruit color knowledge.", matchQuestion.getQuestionText());
