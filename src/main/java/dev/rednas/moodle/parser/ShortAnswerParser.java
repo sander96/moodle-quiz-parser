@@ -1,30 +1,22 @@
-package dev.rednas.moodle.question.type.shortanswer;
+package dev.rednas.moodle.parser;
 
-import dev.rednas.moodle.question.Question;
-import dev.rednas.moodle.question.QuestionType;
-import dev.rednas.moodle.question.type.common.input.text.TextField;
-import lombok.Getter;
-import lombok.Setter;
+import dev.rednas.moodle.question.common.input.text.TextField;
+import dev.rednas.moodle.question.shortanswer.ShortanswerQuestion;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-@Getter
-@Setter
-public class ShortanswerQuestion extends Question {
-    private String questionText;
-    private TextField textField;
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class ShortAnswerParser {
 
-    private ShortanswerQuestion() {
-        super(QuestionType.SHORTANSWER);
-    }
-
-    public static ShortanswerQuestion createInstance(Element contentElement) {
+    public static ShortanswerQuestion parse(Element contentElement) {
         Elements formulationElement = contentElement.select("div.content > div.formulation");
 
         ShortanswerQuestion question = new ShortanswerQuestion();
 
-        question.questionText = formulationElement.select("div.qtext").text();
-        question.textField = parseTextField(formulationElement.select("div.ablock").first());
+        question.setQuestionText(formulationElement.select("div.qtext").text());
+        question.setTextField(parseTextField(formulationElement.select("div.ablock").first()));
 
         return question;
     }

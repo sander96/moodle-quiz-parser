@@ -2,7 +2,10 @@ package dev.rednas.moodle.parser;
 
 import dev.rednas.moodle.language.LanguageComponent;
 import dev.rednas.moodle.language.LanguageUtils;
-import dev.rednas.moodle.question.*;
+import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.QuestionGrade;
+import dev.rednas.moodle.question.QuestionInfo;
+import dev.rednas.moodle.question.QuestionType;
 import dev.rednas.moodle.quiz.Quiz;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -11,7 +14,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,7 +47,8 @@ public class QuizParser {
     private static Question parseQuestion(Element questionElement) {
         QuestionType questionType = parseQuestionType(questionElement);
         Element contentElement = questionElement.selectFirst("div.que > div.content");
-        Question question = QuestionFactory.create(questionType, contentElement);
+
+        Question question = parseContent(questionType, contentElement);
 
         QuestionInfo questionInfo = parseQuestionInfo(questionElement);
         question.setInfo(questionInfo);
@@ -102,6 +109,17 @@ public class QuizParser {
         }
 
         return grade;
+    }
+
+    private static Question parseContent(QuestionType type, Element contentElement) {
+        if (QuestionType.TRUEFALSE.equals(type)) {
+            return TrueFalseParser.parse(contentElement);
+        } else if (QuestionType.SHORTANSWER.equals(type)) {
+            return ShortAnswerParser.parse(contentElement);
+        } else if (QuestionType.MATCH.equals(type)) {
+            return MatchParser.parse(contentElement);
+        }
+        throw new RuntimeException(type + " question type is not implemented yet");
     }
 
 }

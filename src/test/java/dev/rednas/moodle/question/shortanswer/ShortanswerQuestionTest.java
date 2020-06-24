@@ -1,8 +1,7 @@
-package dev.rednas.moodle.question.type.shortanswer;
+package dev.rednas.moodle.question.shortanswer;
 
 import dev.rednas.moodle.parser.QuizParser;
 import dev.rednas.moodle.question.Question;
-import dev.rednas.moodle.question.QuestionType;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
@@ -19,7 +18,7 @@ class ShortanswerQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered", QuestionType.SHORTANSWER);
+        AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());
@@ -35,7 +34,7 @@ class ShortanswerQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect", QuestionType.SHORTANSWER);
+        AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());
@@ -51,7 +50,7 @@ class ShortanswerQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct", QuestionType.SHORTANSWER);
+        AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());

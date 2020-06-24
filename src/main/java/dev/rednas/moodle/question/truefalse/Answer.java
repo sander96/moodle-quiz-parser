@@ -1,6 +1,6 @@
-package dev.rednas.moodle.question.type.truefalse;
+package dev.rednas.moodle.question.truefalse;
 
-import dev.rednas.moodle.question.type.common.input.selection.RadioButton;
+import dev.rednas.moodle.question.common.input.selection.RadioButton;
 import lombok.Data;
 
 @Data

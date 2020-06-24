@@ -2,7 +2,6 @@ package dev.rednas.moodle.parser;
 
 import dev.rednas.moodle.util.TestUtils;
 import dev.rednas.moodle.question.Question;
-import dev.rednas.moodle.question.QuestionType;
 import dev.rednas.moodle.quiz.Quiz;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,9 +16,6 @@ class QuizParserTest {
         String html = TestUtils.readHtml("full", "full1.html");
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
-
-        Question question = quiz.getQuestions().get(0);
-        assertEquals(QuestionType.TRUEFALSE, question.getType());
     }
 
     @ParameterizedTest
@@ -30,7 +26,6 @@ class QuizParserTest {
         assertEquals(1, quiz.getQuestions().size());
 
         Question question = quiz.getQuestions().get(0);
-        assertEquals(QuestionType.TRUEFALSE, question.getType());
         assertEquals(1L, question.getInfo().getNumber());
         assertEquals("correct", question.getInfo().getState());
         assertEquals("1.00", question.getInfo().getGrade().getMax());
