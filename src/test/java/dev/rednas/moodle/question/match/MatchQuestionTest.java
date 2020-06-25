@@ -2,6 +2,7 @@ package dev.rednas.moodle.question.match;
 
 import dev.rednas.moodle.parser.QuizParser;
 import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
@@ -28,14 +29,16 @@ class MatchQuestionTest {
         assertEquals(2, matchQuestion.getDropdowns().size());
         List<String> options = List.of("Choose...", "purple", "black", "green", "pink", "orange");
 
-        Dropdown dropdown1 = matchQuestion.getDropdowns().get(0);
-        assertEquals("Orange is mostly", dropdown1.getText());
+        InputWithText<Dropdown> dropdownInputWithText1 = matchQuestion.getDropdowns().get(0);
+        Dropdown dropdown1 = dropdownInputWithText1.getInput();
+        assertEquals("Orange is mostly", dropdownInputWithText1.getText());
         assertNull(dropdown1.getCorrect());
         AssertionUtils.assertDropdownOptions(dropdown1, 0,
                 options);
 
-        Dropdown dropdown2 = matchQuestion.getDropdowns().get(1);
-        assertEquals("Apple is", dropdown2.getText());
+        InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
+        Dropdown dropdown2 = dropdownInputWithText2.getInput();
+        assertEquals("Apple is", dropdownInputWithText2.getText());
         assertNull(dropdown2.getCorrect());
         AssertionUtils.assertDropdownOptions(dropdown2, 0,
                 options);
@@ -55,14 +58,16 @@ class MatchQuestionTest {
         assertEquals(2, matchQuestion.getDropdowns().size());
         List<String> options = List.of("Choose...", "pink", "purple", "black", "green", "orange");
 
-        Dropdown dropdown1 = matchQuestion.getDropdowns().get(0);
-        assertEquals("Apple is", dropdown1.getText());
+        InputWithText<Dropdown> dropdownInputWithText1 = matchQuestion.getDropdowns().get(0);
+        Dropdown dropdown1 = dropdownInputWithText1.getInput();
+        assertEquals("Apple is", dropdownInputWithText1.getText());
         assertFalse(dropdown1.getCorrect());
         AssertionUtils.assertDropdownOptions(dropdown1, 1,
                 options);
 
-        Dropdown dropdown2 = matchQuestion.getDropdowns().get(1);
-        assertEquals("Orange is mostly", dropdown2.getText());
+        InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
+        Dropdown dropdown2 = dropdownInputWithText2.getInput();
+        assertEquals("Orange is mostly", dropdownInputWithText2.getText());
         assertFalse(dropdown2.getCorrect());
         AssertionUtils.assertDropdownOptions(dropdown2, 1,
                 options);
@@ -82,14 +87,16 @@ class MatchQuestionTest {
         assertEquals(2, matchQuestion.getDropdowns().size());
         List<String> options = List.of("Choose...", "black", "orange", "green", "pink", "purple");
 
-        Dropdown dropdown1 = matchQuestion.getDropdowns().get(0);
-        assertEquals("Orange is mostly", dropdown1.getText());
+        InputWithText<Dropdown> dropdownInputWithText1 = matchQuestion.getDropdowns().get(0);
+        Dropdown dropdown1 = dropdownInputWithText1.getInput();
+        assertEquals("Orange is mostly", dropdownInputWithText1.getText());
         assertTrue(dropdown1.getCorrect());
         AssertionUtils.assertDropdownOptions(dropdown1, 2,
                 options);
 
-        Dropdown dropdown2 = matchQuestion.getDropdowns().get(1);
-        assertEquals("Apple is", dropdown2.getText());
+        InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
+        Dropdown dropdown2 = dropdownInputWithText2.getInput();
+        assertEquals("Apple is", dropdownInputWithText2.getText());
         assertTrue(dropdown2.getCorrect());
         AssertionUtils.assertDropdownOptions(dropdown2, 3,
                 options);
@@ -109,14 +116,16 @@ class MatchQuestionTest {
         assertEquals(2, matchQuestion.getDropdowns().size());
         List<String> options = List.of("Choose...", "purple", "black", "green", "pink", "orange");
 
-        Dropdown dropdown1 = matchQuestion.getDropdowns().get(0);
-        assertEquals("Orange is mostly", dropdown1.getText());
+        InputWithText<Dropdown> dropdownInputWithText1 = matchQuestion.getDropdowns().get(0);
+        Dropdown dropdown1 = dropdownInputWithText1.getInput();
+        assertEquals("Orange is mostly", dropdownInputWithText1.getText());
         assertTrue(dropdown1.getCorrect());
         AssertionUtils.assertDropdownOptions(dropdown1, 5,
                 options);
 
-        Dropdown dropdown2 = matchQuestion.getDropdowns().get(1);
-        assertEquals("Apple is", dropdown2.getText());
+        InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
+        Dropdown dropdown2 = dropdownInputWithText2.getInput();
+        assertEquals("Apple is", dropdownInputWithText2.getText());
         assertFalse(dropdown2.getCorrect());
         AssertionUtils.assertDropdownOptions(dropdown2, 4,
                 options);

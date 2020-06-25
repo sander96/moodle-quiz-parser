@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public abstract class BaseSelectionControl extends BaseInput {
-    private String label;
     private boolean selected;
     private Boolean correct;
 }

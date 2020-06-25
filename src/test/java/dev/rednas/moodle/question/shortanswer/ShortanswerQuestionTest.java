@@ -22,9 +22,9 @@ class ShortanswerQuestionTest {
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());
-        assertEquals("q8:1_answer", shortanswer.getTextField().getId());
-        assertEquals("Answer:", shortanswer.getTextField().getLabel());
-        assertEquals("", shortanswer.getTextField().getValue());
+        assertEquals("q8:1_answer", shortanswer.getTextField().getInput().getId());
+        assertEquals("Answer:", shortanswer.getTextField().getText());
+        assertEquals("", shortanswer.getTextField().getInput().getValue());
     }
 
     @Test
@@ -38,9 +38,9 @@ class ShortanswerQuestionTest {
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());
-        assertEquals("q8:1_answer", shortanswer.getTextField().getId());
-        assertEquals("Answer:", shortanswer.getTextField().getLabel());
-        assertEquals("adadsa", shortanswer.getTextField().getValue());
+        assertEquals("q8:1_answer", shortanswer.getTextField().getInput().getId());
+        assertEquals("Answer:", shortanswer.getTextField().getText());
+        assertEquals("adadsa", shortanswer.getTextField().getInput().getValue());
     }
 
     @Test
@@ -54,8 +54,8 @@ class ShortanswerQuestionTest {
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());
-        assertEquals("q9:1_answer", shortanswer.getTextField().getId());
-        assertEquals("Answer:", shortanswer.getTextField().getLabel());
-        assertEquals("green", shortanswer.getTextField().getValue());
+        assertEquals("q9:1_answer", shortanswer.getTextField().getInput().getId());
+        assertEquals("Answer:", shortanswer.getTextField().getText());
+        assertEquals("green", shortanswer.getTextField().getInput().getValue());
     }
 }
