@@ -1,5 +1,6 @@
 package dev.rednas.moodle.question.truefalse;
 
+import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
 import dev.rednas.moodle.parser.QuizParser;
@@ -23,19 +24,19 @@ class TrueFalseQuestionTest {
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());
-        assertEquals("Select one:", truefalseQuestion.getAnswerBlock().getPrompt());
+        assertEquals("Select one:", truefalseQuestion.getPrompt());
 
-        RadioButton radioButtonTrue = truefalseQuestion.getAnswerBlock().getAnswer().getRadioButtonTrue();
-        assertEquals("q3:1_answertrue", radioButtonTrue.getId());
-        assertEquals("True", radioButtonTrue.getLabel());
-        assertFalse(radioButtonTrue.isSelected());
-        assertNull(radioButtonTrue.getCorrect());
+        InputWithText<RadioButton> radioButtonWithTextTrue = truefalseQuestion.getSelectionControl().get(0);
+        assertEquals("q3:1_answertrue", radioButtonWithTextTrue.getInput().getId());
+        assertEquals("True", radioButtonWithTextTrue.getText());
+        assertFalse(radioButtonWithTextTrue.getInput().isSelected());
+        assertNull(radioButtonWithTextTrue.getInput().getCorrect());
 
-        RadioButton radioButtonFalse = truefalseQuestion.getAnswerBlock().getAnswer().getRadioButtonFalse();
-        assertEquals("q3:1_answerfalse", radioButtonFalse.getId());
-        assertEquals("False", radioButtonFalse.getLabel());
-        assertFalse(radioButtonFalse.isSelected());
-        assertNull(radioButtonFalse.getCorrect());
+        InputWithText<RadioButton> radioButtonWithTextFalse = truefalseQuestion.getSelectionControl().get(1);
+        assertEquals("q3:1_answerfalse", radioButtonWithTextFalse.getInput().getId());
+        assertEquals("False", radioButtonWithTextFalse.getText());
+        assertFalse(radioButtonWithTextFalse.getInput().isSelected());
+        assertNull(radioButtonWithTextFalse.getInput().getCorrect());
     }
 
     @Test
@@ -49,19 +50,19 @@ class TrueFalseQuestionTest {
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());
-        assertEquals("Select one:", truefalseQuestion.getAnswerBlock().getPrompt());
+        assertEquals("Select one:", truefalseQuestion.getPrompt());
 
-        RadioButton radioButtonTrue = truefalseQuestion.getAnswerBlock().getAnswer().getRadioButtonTrue();
-        assertEquals("q3:1_answertrue", radioButtonTrue.getId());
-        assertEquals("True", radioButtonTrue.getLabel());
-        assertFalse(radioButtonTrue.isSelected());
-        assertNull(radioButtonTrue.getCorrect());
+        InputWithText<RadioButton> radioButtonWithTextTrue = truefalseQuestion.getSelectionControl().get(0);
+        assertEquals("q3:1_answertrue", radioButtonWithTextTrue.getInput().getId());
+        assertEquals("True", radioButtonWithTextTrue.getText());
+        assertFalse(radioButtonWithTextTrue.getInput().isSelected());
+        assertNull(radioButtonWithTextTrue.getInput().getCorrect());
 
-        RadioButton radioButtonFalse = truefalseQuestion.getAnswerBlock().getAnswer().getRadioButtonFalse();
-        assertEquals("q3:1_answerfalse", radioButtonFalse.getId());
-        assertEquals("False", radioButtonFalse.getLabel());
-        assertTrue(radioButtonFalse.isSelected());
-        assertFalse(radioButtonFalse.getCorrect());
+        InputWithText<RadioButton> radioButtonWithTextFalse = truefalseQuestion.getSelectionControl().get(1);
+        assertEquals("q3:1_answerfalse", radioButtonWithTextFalse.getInput().getId());
+        assertEquals("False", radioButtonWithTextFalse.getText());
+        assertTrue(radioButtonWithTextFalse.getInput().isSelected());
+        assertFalse(radioButtonWithTextFalse.getInput().getCorrect());
     }
 
     @Test
@@ -75,18 +76,18 @@ class TrueFalseQuestionTest {
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());
-        assertEquals("Select one:", truefalseQuestion.getAnswerBlock().getPrompt());
+        assertEquals("Select one:", truefalseQuestion.getPrompt());
 
-        RadioButton radioButtonTrue = truefalseQuestion.getAnswerBlock().getAnswer().getRadioButtonTrue();
-        assertEquals("q4:1_answertrue", radioButtonTrue.getId());
-        assertEquals("True", radioButtonTrue.getLabel());
-        assertTrue(radioButtonTrue.isSelected());
-        assertEquals(true, radioButtonTrue.getCorrect());
+        InputWithText<RadioButton> radioButtonWithTextTrue = truefalseQuestion.getSelectionControl().get(0);
+        assertEquals("q4:1_answertrue", radioButtonWithTextTrue.getInput().getId());
+        assertEquals("True", radioButtonWithTextTrue.getText());
+        assertTrue(radioButtonWithTextTrue.getInput().isSelected());
+        assertTrue(radioButtonWithTextTrue.getInput().getCorrect());
 
-        RadioButton radioButtonFalse = truefalseQuestion.getAnswerBlock().getAnswer().getRadioButtonFalse();
-        assertEquals("q4:1_answerfalse", radioButtonFalse.getId());
-        assertEquals("False", radioButtonFalse.getLabel());
-        assertFalse(radioButtonFalse.isSelected());
-        assertNull(radioButtonFalse.getCorrect());
+        InputWithText<RadioButton> radioButtonWithTextFalse = truefalseQuestion.getSelectionControl().get(1);
+        assertEquals("q4:1_answerfalse", radioButtonWithTextFalse.getInput().getId());
+        assertEquals("False", radioButtonWithTextFalse.getText());
+        assertFalse(radioButtonWithTextFalse.getInput().isSelected());
+        assertNull(radioButtonWithTextFalse.getInput().getCorrect());
     }
 }

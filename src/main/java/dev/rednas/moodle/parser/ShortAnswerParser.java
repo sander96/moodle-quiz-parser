@@ -1,5 +1,6 @@
 package dev.rednas.moodle.parser;
 
+import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.text.TextField;
 import dev.rednas.moodle.question.shortanswer.ShortanswerQuestion;
 import lombok.AccessLevel;
@@ -21,18 +22,20 @@ public class ShortAnswerParser {
         return question;
     }
 
-    private static TextField parseTextField(Element textFieldElement) {
+    private static InputWithText<TextField> parseTextField(Element textFieldElement) {
+        InputWithText<TextField> textFieldWithText = new InputWithText<>();
         TextField textField = new TextField();
         Element inputElement = textFieldElement.select("span > input").first();
         textField.setId(inputElement.id());
-        textField.setLabel(textFieldElement.select("label").first().text());
+        textFieldWithText.setText(textFieldElement.select("label").first().text());
         if (inputElement.hasClass("correct")) {
             textField.setCorrect(true);
         } else if (inputElement.hasClass("incorrect")) {
             textField.setCorrect(false);
         }
         textField.setValue(inputElement.attr("value"));
+        textFieldWithText.setInput(textField);
 
-        return textField;
+        return textFieldWithText;
     }
 }

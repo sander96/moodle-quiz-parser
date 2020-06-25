@@ -1,8 +1,7 @@
 package dev.rednas.moodle.parser;
 
+import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.selection.RadioButton;
-import dev.rednas.moodle.question.truefalse.Answer;
-import dev.rednas.moodle.question.truefalse.AnswerBlock;
 import dev.rednas.moodle.question.truefalse.TrueFalseQuestion;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -17,34 +16,28 @@ public class TrueFalseParser {
 
         TrueFalseQuestion question = new TrueFalseQuestion();
         question.setQuestionText(formulationElement.select("div.qtext").text());
-
-        AnswerBlock answerBlock = new AnswerBlock();
-        question.setAnswerBlock(answerBlock);
-        answerBlock.setPrompt(formulationElement.select("div.prompt").text());
+        question.setPrompt(formulationElement.select("div.prompt").text());
 
         Elements answerElement = formulationElement.select("div.answer");
-        RadioButton radioButton1 = parserRadiobutton(answerElement.select(".r0").first());
-        RadioButton radioButton2 = parserRadiobutton(answerElement.select(".r1").first());
-
-        Answer answer = new Answer();
-        answer.setRadioButtonTrue(radioButton1);
-        answer.setRadioButtonFalse(radioButton2);
-        answerBlock.setAnswer(answer);
+        question.getSelectionControl().add(parseRadiobutton(answerElement.select(".r0").first()));
+        question.getSelectionControl().add(parseRadiobutton(answerElement.select(".r1").first()));
 
         return question;
     }
 
-    private static RadioButton parserRadiobutton(Element radioButtonElement) {
+    private static InputWithText<RadioButton> parseRadiobutton(Element radioButtonElement) {
+        InputWithText<RadioButton> radioButtonWithText = new InputWithText<>();
         RadioButton radioButton = new RadioButton();
         Element input = radioButtonElement.select("input").first();
         radioButton.setId(input.id());
         radioButton.setSelected(input.hasAttr("checked"));
-        radioButton.setLabel(radioButtonElement.select("label").first().text());
+        radioButtonWithText.setText(radioButtonElement.select("label").first().text());
         if (radioButtonElement.hasClass("correct")) {
             radioButton.setCorrect(true);
         } else if (radioButtonElement.hasClass("incorrect")) {
             radioButton.setCorrect(false);
         }
-        return radioButton;
+        radioButtonWithText.setInput(radioButton);
+        return radioButtonWithText;
     }
 }

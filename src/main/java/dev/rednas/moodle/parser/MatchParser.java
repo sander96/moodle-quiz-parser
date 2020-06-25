@@ -1,5 +1,6 @@
 package dev.rednas.moodle.parser;
 
+import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
 import dev.rednas.moodle.question.common.input.dropdown.Option;
 import dev.rednas.moodle.question.match.MatchQuestion;
@@ -24,13 +25,16 @@ public class MatchParser {
         return question;
     }
 
-    private static List<Dropdown> parseTable(Element formulationElement) {
+    private static List<InputWithText<Dropdown>> parseTable(Element formulationElement) {
         Elements tableRows = formulationElement.select("table > tbody > tr");
-        List<Dropdown> dropdowns = new ArrayList<>();
+        List<InputWithText<Dropdown>> dropdowns = new ArrayList<>();
         for (Element tableRow : tableRows) {
+            InputWithText<Dropdown> dropdownWithText = new InputWithText<>();
+            dropdownWithText.setText(tableRow.select("td.text").text());
+
             Dropdown dropdown = new Dropdown();
+            dropdownWithText.setInput(dropdown);
             dropdown.setId(tableRow.selectFirst("select").id());
-            dropdown.setText(tableRow.select("td.text").text());
             dropdown.setOptions(parseOptions(tableRow));
 
             Element element = tableRow.selectFirst("td.control");
@@ -39,7 +43,7 @@ public class MatchParser {
             } else if (element.hasClass("incorrect")) {
                 dropdown.setCorrect(false);
             }
-            dropdowns.add(dropdown);
+            dropdowns.add(dropdownWithText);
         }
         return dropdowns;
     }
