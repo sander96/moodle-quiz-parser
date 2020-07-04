@@ -1,32 +1,20 @@
-package dev.rednas.moodle.parser;
+package dev.rednas.moodle.question.match;
 
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
 import dev.rednas.moodle.question.common.input.dropdown.Option;
-import dev.rednas.moodle.question.match.MatchQuestion;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import pl.droidsonroids.jspoon.ElementConverter;
+import pl.droidsonroids.jspoon.annotation.Selector;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class MatchParser {
-
-    public static MatchQuestion parse(Element contentElement) {
-        Elements formulationElement = contentElement.select("div.content > div.formulation");
-        MatchQuestion question = new MatchQuestion();
-        question.setQuestionText(formulationElement.select("div.qtext").first().text());
-
-        question.setDropdowns(parseTable(contentElement));
-
-        return question;
-    }
-
-    private static List<InputWithText<Dropdown>> parseTable(Element formulationElement) {
-        Elements tableRows = formulationElement.select("table > tbody > tr");
+public class DropdownConverter implements ElementConverter<List<InputWithText<Dropdown>>> {
+    @Override
+    public List<InputWithText<Dropdown>> convert(Element node, Selector selector) {
+        Elements tableRows = node.select("table > tbody > tr");
         List<InputWithText<Dropdown>> dropdowns = new ArrayList<>();
         for (Element tableRow : tableRows) {
             InputWithText<Dropdown> dropdownWithText = new InputWithText<>();
