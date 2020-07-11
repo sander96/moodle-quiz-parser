@@ -2,7 +2,7 @@ package dev.rednas.moodle.question.match;
 
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
-import dev.rednas.moodle.question.common.input.dropdown.Option;
+import dev.rednas.moodle.question.common.parser.DropdownParser;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import pl.droidsonroids.jspoon.ElementConverter;
@@ -19,34 +19,9 @@ public class DropdownConverter implements ElementConverter<List<InputWithText<Dr
         for (Element tableRow : tableRows) {
             InputWithText<Dropdown> dropdownWithText = new InputWithText<>();
             dropdownWithText.setText(tableRow.select("td.text").text());
-
-            Dropdown dropdown = new Dropdown();
-            dropdownWithText.setInput(dropdown);
-            dropdown.setId(tableRow.selectFirst("select").id());
-            dropdown.setOptions(parseOptions(tableRow));
-
-            Element element = tableRow.selectFirst("td.control");
-            if (element.hasClass("correct")) {
-                dropdown.setCorrect(true);
-            } else if (element.hasClass("incorrect")) {
-                dropdown.setCorrect(false);
-            }
+            dropdownWithText.setInput(DropdownParser.parse(tableRow));
             dropdowns.add(dropdownWithText);
         }
         return dropdowns;
-    }
-
-    private static List<Option> parseOptions(Element tableRow) {
-        List<Option> options = new ArrayList<>();
-        Elements optionElements = tableRow.select("option");
-        for (Element optionElement : optionElements) {
-            Option option = new Option();
-            option.setValue(optionElement.attr("value"));
-            option.setSelected(optionElement.hasAttr("selected"));
-            option.setText(optionElement.text());
-            options.add(option);
-        }
-
-        return options;
     }
 }

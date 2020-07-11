@@ -10,5 +10,4 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class Dropdown extends BaseInput {
     private List<Option> options;
-    private Boolean correct;
 }

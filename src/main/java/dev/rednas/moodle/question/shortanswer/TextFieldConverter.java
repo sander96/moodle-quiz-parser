@@ -2,6 +2,7 @@ package dev.rednas.moodle.question.shortanswer;
 
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.text.TextField;
+import dev.rednas.moodle.question.common.parser.InputGradeStateParser;
 import org.jsoup.nodes.Element;
 import pl.droidsonroids.jspoon.ElementConverter;
 import pl.droidsonroids.jspoon.annotation.Selector;
@@ -15,11 +16,7 @@ public class TextFieldConverter implements ElementConverter<InputWithText<TextFi
         textField.setId(inputElement.id());
         textFieldWithText.setText(node.select("label").first().text());
 
-        if (inputElement.hasClass("correct")) {
-            textField.setCorrect(true);
-        } else if (inputElement.hasClass("incorrect")) {
-            textField.setCorrect(false);
-        }
+        InputGradeStateParser.parse(inputElement).ifPresent(textField::setGradeState);
 
         textField.setValue(inputElement.attr("value"));
         textFieldWithText.setInput(textField);

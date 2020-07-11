@@ -1,6 +1,7 @@
 package dev.rednas.moodle.question.match;
 
 import dev.rednas.moodle.parser.QuizParser;
+import dev.rednas.moodle.question.GradeState;
 import dev.rednas.moodle.question.Question;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
@@ -32,14 +33,14 @@ class MatchQuestionTest {
         InputWithText<Dropdown> dropdownInputWithText1 = matchQuestion.getDropdowns().get(0);
         Dropdown dropdown1 = dropdownInputWithText1.getInput();
         assertEquals("Orange is mostly", dropdownInputWithText1.getText());
-        assertNull(dropdown1.getCorrect());
+        assertNull(dropdown1.getGradeState());
         AssertionUtils.assertDropdownOptions(dropdown1, 0,
                 options);
 
         InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
         Dropdown dropdown2 = dropdownInputWithText2.getInput();
         assertEquals("Apple is", dropdownInputWithText2.getText());
-        assertNull(dropdown2.getCorrect());
+        assertNull(dropdown2.getGradeState());
         AssertionUtils.assertDropdownOptions(dropdown2, 0,
                 options);
     }
@@ -61,14 +62,14 @@ class MatchQuestionTest {
         InputWithText<Dropdown> dropdownInputWithText1 = matchQuestion.getDropdowns().get(0);
         Dropdown dropdown1 = dropdownInputWithText1.getInput();
         assertEquals("Apple is", dropdownInputWithText1.getText());
-        assertFalse(dropdown1.getCorrect());
+        assertEquals(GradeState.INCORRECT, dropdown1.getGradeState());
         AssertionUtils.assertDropdownOptions(dropdown1, 1,
                 options);
 
         InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
         Dropdown dropdown2 = dropdownInputWithText2.getInput();
         assertEquals("Orange is mostly", dropdownInputWithText2.getText());
-        assertFalse(dropdown2.getCorrect());
+        assertEquals(GradeState.INCORRECT, dropdown1.getGradeState());
         AssertionUtils.assertDropdownOptions(dropdown2, 1,
                 options);
     }
@@ -90,16 +91,14 @@ class MatchQuestionTest {
         InputWithText<Dropdown> dropdownInputWithText1 = matchQuestion.getDropdowns().get(0);
         Dropdown dropdown1 = dropdownInputWithText1.getInput();
         assertEquals("Orange is mostly", dropdownInputWithText1.getText());
-        assertTrue(dropdown1.getCorrect());
-        AssertionUtils.assertDropdownOptions(dropdown1, 2,
-                options);
+        assertEquals(GradeState.CORRECT, dropdown1.getGradeState());
+        AssertionUtils.assertDropdownOptions(dropdown1, 2, options);
 
         InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
         Dropdown dropdown2 = dropdownInputWithText2.getInput();
         assertEquals("Apple is", dropdownInputWithText2.getText());
-        assertTrue(dropdown2.getCorrect());
-        AssertionUtils.assertDropdownOptions(dropdown2, 3,
-                options);
+        assertEquals(GradeState.CORRECT, dropdown1.getGradeState());
+        AssertionUtils.assertDropdownOptions(dropdown2, 3, options);
     }
 
     @Test
@@ -119,14 +118,14 @@ class MatchQuestionTest {
         InputWithText<Dropdown> dropdownInputWithText1 = matchQuestion.getDropdowns().get(0);
         Dropdown dropdown1 = dropdownInputWithText1.getInput();
         assertEquals("Orange is mostly", dropdownInputWithText1.getText());
-        assertTrue(dropdown1.getCorrect());
+        assertEquals(GradeState.CORRECT, dropdown1.getGradeState());
         AssertionUtils.assertDropdownOptions(dropdown1, 5,
                 options);
 
         InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
         Dropdown dropdown2 = dropdownInputWithText2.getInput();
         assertEquals("Apple is", dropdownInputWithText2.getText());
-        assertFalse(dropdown2.getCorrect());
+        assertEquals(GradeState.INCORRECT, dropdown2.getGradeState());
         AssertionUtils.assertDropdownOptions(dropdown2, 4,
                 options);
     }
