@@ -21,16 +21,15 @@ public class AssertionUtils {
         assertEquals(state, question.getInfo().getState());
     }
 
-    public static void assertOption(Option option, String text, String value, boolean selected) {
+    public static void assertOption(Option option, String text, boolean selected) {
         assertEquals(text, option.getText());
-        assertEquals(value, option.getValue());
         assertEquals(selected, option.isSelected());
     }
 
     public static void assertDropdownOptions(Dropdown dropdown, int selectedIndex, List<String> optionStrings) {
         List<Option> options = dropdown.getOptions();
         for (int i = 0; i < options.size(); i++) {
-            AssertionUtils.assertOption(options.get(i), optionStrings.get(i), String.valueOf(i), i == selectedIndex);
+            AssertionUtils.assertOption(options.get(i), optionStrings.get(i), i == selectedIndex);
         }
     }
 }

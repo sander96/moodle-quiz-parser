@@ -4,5 +4,6 @@ public enum LanguageComponent {
     QUESTION,
     QTYPE_TRUEFALSE,
     QTYPE_SHORTANSWER,
-    QTYPE_MATCH
+    QTYPE_MATCH,
+    QTYPE_NUMERICAL
 }

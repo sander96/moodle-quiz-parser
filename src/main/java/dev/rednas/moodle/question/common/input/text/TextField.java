@@ -8,5 +8,4 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class TextField extends BaseInput {
     private String value;
-    private Boolean correct;    // TODO this can be partially correct?
 }

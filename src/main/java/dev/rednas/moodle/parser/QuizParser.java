@@ -3,6 +3,7 @@ package dev.rednas.moodle.parser;
 import dev.rednas.moodle.question.Question;
 import dev.rednas.moodle.question.QuestionType;
 import dev.rednas.moodle.question.match.MatchQuestion;
+import dev.rednas.moodle.question.numerical.NumericalQuestion;
 import dev.rednas.moodle.question.shortanswer.ShortanswerQuestion;
 import dev.rednas.moodle.question.truefalse.TrueFalseQuestion;
 import dev.rednas.moodle.quiz.Quiz;
@@ -65,6 +66,10 @@ public class QuizParser {
         } else if (QuestionType.MATCH.equals(type)) {
             return Jspoon.create()
                     .adapter(MatchQuestion.class)
+                    .fromHtml(questionElement.outerHtml());
+        } else if (QuestionType.NUMERICAL.equals(type)) {
+            return Jspoon.create()
+                    .adapter(NumericalQuestion.class)
                     .fromHtml(questionElement.outerHtml());
         }
         throw new RuntimeException(type + " question type is not implemented yet");
