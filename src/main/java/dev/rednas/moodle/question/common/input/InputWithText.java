@@ -6,4 +6,5 @@ import lombok.Data;
 public class InputWithText<T extends BaseInput> {
     private String text;
     private T input;
+    private String feedback;
 }
