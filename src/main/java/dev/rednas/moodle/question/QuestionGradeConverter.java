@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class QuestionGradeConverter implements ElementConverter<QuestionGrade> {
     @Override
     public QuestionGrade convert(Element node, Selector selector) {
-        Pattern pattern = Pattern.compile("(\\d+[,.]*\\d+)", Pattern.MULTILINE);
+        Pattern pattern = Pattern.compile("(-?\\d+[,.]*\\d+)", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(node.text());
 
         QuestionGrade grade = new QuestionGrade();

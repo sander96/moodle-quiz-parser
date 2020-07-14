@@ -36,7 +36,8 @@ task setupMoodleLangpacks {
                     include '*/question.php', '*/qtype_truefalse.php',
                             '*/qtype_shortanswer.php', '*/qtype_match.php',
                             '*/qtype_numerical.php', '*/qtype_multichoice.php',
-                            '*/qtype_calculated.php', '*/qtype_calculatedsimple.php'
+                            '*/qtype_calculated.php', '*/qtype_calculatedsimple.php',
+                            '*/qtype_calculatedmulti.php'
                 }
                 into 'src/main/resources/langpack/'
             }
