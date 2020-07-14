@@ -2,13 +2,6 @@ package dev.rednas.moodle.parser;
 
 import dev.rednas.moodle.question.Question;
 import dev.rednas.moodle.question.QuestionType;
-import dev.rednas.moodle.question.calculated.CalculatedQuestion;
-import dev.rednas.moodle.question.calculatedsimple.CalculatedSimpleQuestion;
-import dev.rednas.moodle.question.match.MatchQuestion;
-import dev.rednas.moodle.question.multichoice.Multichoice;
-import dev.rednas.moodle.question.numerical.NumericalQuestion;
-import dev.rednas.moodle.question.shortanswer.ShortanswerQuestion;
-import dev.rednas.moodle.question.truefalse.TrueFalseQuestion;
 import dev.rednas.moodle.quiz.Quiz;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -19,9 +12,7 @@ import org.jsoup.select.Elements;
 import pl.droidsonroids.jspoon.Jspoon;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class QuizParser {
