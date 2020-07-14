@@ -3,6 +3,7 @@ package dev.rednas.moodle.parser;
 import dev.rednas.moodle.question.Question;
 import dev.rednas.moodle.question.QuestionType;
 import dev.rednas.moodle.question.calculated.CalculatedQuestion;
+import dev.rednas.moodle.question.calculatedsimple.CalculatedSimpleQuestion;
 import dev.rednas.moodle.question.match.MatchQuestion;
 import dev.rednas.moodle.question.multichoice.Multichoice;
 import dev.rednas.moodle.question.numerical.NumericalQuestion;
@@ -49,39 +50,18 @@ public class QuizParser {
     }
 
     private static QuestionType parseQuestionType(Element questionElement) {
-        Set<String> classNames = questionElement.classNames();
-        Iterator<String> iterator = classNames.iterator();
-        iterator.next();
-        String questionType = iterator.next();
-        return QuestionType.valueOf(questionType.toUpperCase());
+        List<String> classNames = new ArrayList<>(questionElement.classNames());
+        String questionType = classNames.get(1).toUpperCase();
+        try {
+            return QuestionType.valueOf(questionType);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Question type '" + questionType + "' is not implemented");
+        }
     }
 
     private static Question parseQuestion(QuestionType type, Element questionElement) {
-        if (QuestionType.TRUEFALSE.equals(type)) {
-            return Jspoon.create()
-                    .adapter(TrueFalseQuestion.class)
-                    .fromHtml(questionElement.outerHtml());
-        } else if (QuestionType.SHORTANSWER.equals(type)) {
-            return Jspoon.create()
-                    .adapter(ShortanswerQuestion.class)
-                    .fromHtml(questionElement.outerHtml());
-        } else if (QuestionType.MATCH.equals(type)) {
-            return Jspoon.create()
-                    .adapter(MatchQuestion.class)
-                    .fromHtml(questionElement.outerHtml());
-        } else if (QuestionType.NUMERICAL.equals(type)) {
-            return Jspoon.create()
-                    .adapter(NumericalQuestion.class)
-                    .fromHtml(questionElement.outerHtml());
-        } else if (QuestionType.MULTICHOICE.equals(type)) {
-            return Jspoon.create()
-                    .adapter(Multichoice.class)
-                    .fromHtml(questionElement.outerHtml());
-        } else if (QuestionType.CALCULATED.equals(type)) {
-            return Jspoon.create()
-                    .adapter(CalculatedQuestion.class)
-                    .fromHtml(questionElement.outerHtml());
-        }
-        throw new RuntimeException(type + " question type is not implemented yet");
+        return Jspoon.create()
+                .adapter(type.getQuestionClass())
+                .fromHtml(questionElement.outerHtml());
     }
 }
