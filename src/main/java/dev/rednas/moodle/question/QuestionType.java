@@ -4,5 +4,6 @@ public enum QuestionType {
     TRUEFALSE,
     SHORTANSWER,
     MATCH,
-    NUMERICAL
+    NUMERICAL,
+    MULTICHOICE
 }
