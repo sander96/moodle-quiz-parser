@@ -5,5 +5,6 @@ public enum QuestionType {
     SHORTANSWER,
     MATCH,
     NUMERICAL,
-    MULTICHOICE
+    MULTICHOICE,
+    CALCULATED
 }
