@@ -4,6 +4,7 @@ import dev.rednas.moodle.question.calculated.CalculatedQuestion;
 import dev.rednas.moodle.question.calculatedmulti.CalculatedMultiQuestion;
 import dev.rednas.moodle.question.calculatedsimple.CalculatedSimpleQuestion;
 import dev.rednas.moodle.question.description.DescriptionQuestion;
+import dev.rednas.moodle.question.essay.EssayQuestion;
 import dev.rednas.moodle.question.match.MatchQuestion;
 import dev.rednas.moodle.question.multichoice.Multichoice;
 import dev.rednas.moodle.question.numerical.NumericalQuestion;
@@ -22,7 +23,8 @@ public enum QuestionType {
     CALCULATED(CalculatedQuestion.class),
     CALCULATEDSIMPLE(CalculatedSimpleQuestion.class),
     CALCULATEDMULTI(CalculatedMultiQuestion.class),
-    DESCRIPTION(DescriptionQuestion.class);
+    DESCRIPTION(DescriptionQuestion.class),
+    ESSAY(EssayQuestion.class);
 
     @Getter
     private final Class<? extends Question> questionClass;
