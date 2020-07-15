@@ -33,12 +33,7 @@ task setupMoodleLangpacks {
             println(file.path)
             copy {
                 from zipTree(file.path).matching {
-                    include '*/question.php', '*/qtype_truefalse.php',
-                            '*/qtype_shortanswer.php', '*/qtype_match.php',
-                            '*/qtype_numerical.php', '*/qtype_multichoice.php',
-                            '*/qtype_calculated.php', '*/qtype_calculatedsimple.php',
-                            '*/qtype_calculatedmulti.php', '*/qtype_description.php',
-                            '*/qtype_essay.php'
+                    include '*/question.php', '*/qtype_*.php'
                 }
                 into 'src/main/resources/langpack/'
             }

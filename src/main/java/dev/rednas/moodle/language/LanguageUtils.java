@@ -48,8 +48,12 @@ public class LanguageUtils {
                     String fileContent = new String(Files.readAllBytes(file.toPath()));
                     String filename = file.getName().split("\\.php")[0];
 
-                    LanguageComponent component = LanguageComponent.valueOf(filename.toUpperCase());
-                    languageContent.put(component, parseLocalizedStringsAndIdentifiers(fileContent));
+                    try {
+                        LanguageComponent component = LanguageComponent.valueOf(filename.toUpperCase());
+                        languageContent.put(component, parseLocalizedStringsAndIdentifiers(fileContent));
+                    } catch (IllegalArgumentException e) {
+                        // ignore
+                    }
                 }
                 map.put(languageFolder.getName(), languageContent);
             }

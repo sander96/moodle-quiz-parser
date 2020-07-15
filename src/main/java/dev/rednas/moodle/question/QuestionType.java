@@ -8,6 +8,7 @@ import dev.rednas.moodle.question.essay.EssayQuestion;
 import dev.rednas.moodle.question.match.MatchQuestion;
 import dev.rednas.moodle.question.multichoice.Multichoice;
 import dev.rednas.moodle.question.numerical.NumericalQuestion;
+import dev.rednas.moodle.question.randomsamatch.RandomShortAnswerQuestion;
 import dev.rednas.moodle.question.shortanswer.ShortanswerQuestion;
 import dev.rednas.moodle.question.truefalse.TrueFalseQuestion;
 import lombok.Getter;
@@ -24,7 +25,8 @@ public enum QuestionType {
     CALCULATEDSIMPLE(CalculatedSimpleQuestion.class),
     CALCULATEDMULTI(CalculatedMultiQuestion.class),
     DESCRIPTION(DescriptionQuestion.class),
-    ESSAY(EssayQuestion.class);
+    ESSAY(EssayQuestion.class),
+    RANDOMSAMATCH(RandomShortAnswerQuestion.class);
 
     @Getter
     private final Class<? extends Question> questionClass;
