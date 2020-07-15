@@ -8,7 +8,7 @@ import dev.rednas.moodle.question.essay.EssayQuestion;
 import dev.rednas.moodle.question.match.MatchQuestion;
 import dev.rednas.moodle.question.multichoice.Multichoice;
 import dev.rednas.moodle.question.numerical.NumericalQuestion;
-import dev.rednas.moodle.question.random.RandomShortAnswerQuestion;
+import dev.rednas.moodle.question.randomsamatch.RandomShortAnswerQuestion;
 import dev.rednas.moodle.question.shortanswer.ShortanswerQuestion;
 import dev.rednas.moodle.question.truefalse.TrueFalseQuestion;
 import lombok.Getter;

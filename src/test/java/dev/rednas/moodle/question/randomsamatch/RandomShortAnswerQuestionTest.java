@@ -1,4 +1,4 @@
-package dev.rednas.moodle.question.random;
+package dev.rednas.moodle.question.randomsamatch;
 
 import dev.rednas.moodle.parser.QuizParser;
 import dev.rednas.moodle.question.GradeState;
@@ -18,7 +18,7 @@ class RandomShortAnswerQuestionTest {
 
     @Test
     void parseCorrect() {
-        String html = TestUtils.readHtml("random", "correct1.html");
+        String html = TestUtils.readHtml("randomsamatch", "correct1.html");
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 

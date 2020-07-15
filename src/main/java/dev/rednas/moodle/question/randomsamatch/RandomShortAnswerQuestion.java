@@ -1,4 +1,4 @@
-package dev.rednas.moodle.question.random;
+package dev.rednas.moodle.question.randomsamatch;
 
 import dev.rednas.moodle.question.match.MatchQuestion;
 
