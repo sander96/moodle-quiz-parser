@@ -2,7 +2,7 @@ package dev.rednas.moodle.question.calculatedmulti;
 
 import dev.rednas.moodle.parser.QuizParser;
 import dev.rednas.moodle.question.GradeState;
-import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.selection.SelectionControl;
 import dev.rednas.moodle.question.common.input.selection.SelectionType;
@@ -23,7 +23,7 @@ class CalculatedMultiQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, "-0.83", "1.00", 1L, "incorrect");
 
         Multichoice multichoice = (Multichoice) question;

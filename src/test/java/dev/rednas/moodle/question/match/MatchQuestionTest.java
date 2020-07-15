@@ -2,7 +2,7 @@ package dev.rednas.moodle.question.match;
 
 import dev.rednas.moodle.parser.QuizParser;
 import dev.rednas.moodle.question.GradeState;
-import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
 import dev.rednas.moodle.quiz.Quiz;
@@ -22,7 +22,7 @@ class MatchQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
@@ -51,7 +51,7 @@ class MatchQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
@@ -80,7 +80,7 @@ class MatchQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
@@ -107,7 +107,7 @@ class MatchQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, "0.50", "1.00", 1L, "partiallycorrect");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
