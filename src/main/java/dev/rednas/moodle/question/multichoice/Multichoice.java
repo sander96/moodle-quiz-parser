@@ -1,6 +1,6 @@
 package dev.rednas.moodle.question.multichoice;
 
-import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.selection.SelectionControl;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Multichoice extends Question {
+public class Multichoice extends GradedQuestion {
 
     @Selector(value = "div.qtext")
     private String questionText;

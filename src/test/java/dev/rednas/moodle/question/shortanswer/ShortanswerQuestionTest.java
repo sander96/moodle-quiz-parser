@@ -1,7 +1,7 @@
 package dev.rednas.moodle.question.shortanswer;
 
 import dev.rednas.moodle.parser.QuizParser;
-import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
@@ -17,7 +17,7 @@ class ShortanswerQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
@@ -33,7 +33,7 @@ class ShortanswerQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
@@ -49,7 +49,7 @@ class ShortanswerQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;

@@ -7,7 +7,7 @@ import dev.rednas.moodle.question.common.input.selection.SelectionType;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
 import dev.rednas.moodle.parser.QuizParser;
-import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.quiz.Quiz;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,7 @@ class TrueFalseQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered");
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
@@ -49,7 +49,7 @@ class TrueFalseQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect");
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
@@ -77,7 +77,7 @@ class TrueFalseQuestionTest {
         Quiz quiz = QuizParser.parse(html);
         assertEquals(1, quiz.getQuestions().size());
 
-        Question question = quiz.getQuestions().get(0);
+        GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;

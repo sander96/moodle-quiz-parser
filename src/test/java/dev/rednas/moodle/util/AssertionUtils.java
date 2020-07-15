@@ -1,6 +1,6 @@
 package dev.rednas.moodle.util;
 
-import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
 import dev.rednas.moodle.question.common.input.dropdown.Option;
 import lombok.AccessLevel;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AssertionUtils {
 
-    public static void assertQuestionInfo(Question question, String mark, String max,
+    public static void assertQuestionInfo(GradedQuestion question, String mark, String max,
                                           Long number, String state) {
         assertEquals(mark, question.getInfo().getGrade().getMark());
         assertEquals(max, question.getInfo().getGrade().getMax());

@@ -1,6 +1,6 @@
 package dev.rednas.moodle.question.numerical;
 
-import dev.rednas.moodle.question.Question;
+import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.text.TextField;
 import dev.rednas.moodle.question.shortanswer.TextFieldConverter;
@@ -11,7 +11,7 @@ import pl.droidsonroids.jspoon.annotation.Selector;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Selector(value = "div.content > div.formulation")
-public class NumericalQuestion extends Question {
+public class NumericalQuestion extends GradedQuestion {
 
     @Selector(value = "div.qtext")
     private String questionText;
