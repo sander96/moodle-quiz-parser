@@ -47,6 +47,7 @@ public class LanguageUtils {
                 for (File file : languageFolder.listFiles()) {
                     String fileContent = new String(Files.readAllBytes(file.toPath()));
                     String filename = file.getName().split("\\.php")[0];
+
                     LanguageComponent component = LanguageComponent.valueOf(filename.toUpperCase());
                     languageContent.put(component, parseLocalizedStringsAndIdentifiers(fileContent));
                 }
