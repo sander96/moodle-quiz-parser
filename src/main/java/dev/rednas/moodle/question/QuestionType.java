@@ -5,6 +5,7 @@ import dev.rednas.moodle.question.calculatedmulti.CalculatedMultiQuestion;
 import dev.rednas.moodle.question.calculatedsimple.CalculatedSimpleQuestion;
 import dev.rednas.moodle.question.description.DescriptionQuestion;
 import dev.rednas.moodle.question.essay.EssayQuestion;
+import dev.rednas.moodle.question.gapselect.GapselectQuestion;
 import dev.rednas.moodle.question.match.MatchQuestion;
 import dev.rednas.moodle.question.multichoice.Multichoice;
 import dev.rednas.moodle.question.numerical.NumericalQuestion;
@@ -26,7 +27,8 @@ public enum QuestionType {
     CALCULATEDMULTI(CalculatedMultiQuestion.class),
     DESCRIPTION(DescriptionQuestion.class),
     ESSAY(EssayQuestion.class),
-    RANDOMSAMATCH(RandomShortAnswerQuestion.class);
+    RANDOMSAMATCH(RandomShortAnswerQuestion.class),
+    GAPSELECT(GapselectQuestion.class);
 
     @Getter
     private final Class<? extends Question> questionClass;
