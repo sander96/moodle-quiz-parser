@@ -12,5 +12,6 @@ public enum LanguageComponent {
     QTYPE_CALCULATEDMULTI,
     QTYPE_DESCRIPTION,
     QTYPE_ESSAY,
-    QTYPE_RANDOM
+    QTYPE_RANDOM,
+    QTYPE_GAPSELECT
 }

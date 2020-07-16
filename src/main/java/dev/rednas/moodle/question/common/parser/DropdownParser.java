@@ -14,11 +14,15 @@ import java.util.List;
 public class DropdownParser {
 
     public static Dropdown parse(Element node) {
+        return parse(node, "td.control");
+    }
+
+    public static Dropdown parse(Element node, String correctnessCss) {
         Dropdown dropdown = new Dropdown();
         dropdown.setId(node.selectFirst("select").id());
         dropdown.setOptions(parseOptions(node));
 
-        Element element = node.selectFirst("td.control");
+        Element element = node.selectFirst(correctnessCss);
         InputGradeStateParser.parse(element).ifPresent(dropdown::setGradeState);
         return dropdown;
     }
