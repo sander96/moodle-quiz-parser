@@ -1,0 +1,23 @@
+Match the following cities with the correct state:
+* San Francisco: {0}
+* Tucson: {1}
+* Los Angeles: {2} ssss
+* Phoenix: {3} test
+The capital of France is {4}.
+This question consists of some text with an answer embedded right
+here {5}
+and right after that you will have to deal with this short answer
+ {6}
+and finally we have a floating point number
+{7}.
+The  multichoice question can also be shown in the vertical
+display of the standard moodle multiple choice.
+{8}
+Or in an horizontal display that is included here in a table
+{9}
+A shortanswer question where case must match. Write moodle in
+upper case letters {10}
+Note that addresses like www.moodle.org and smileys :-) all work as normal:
+a) How good is this? {11}
+b) What grade would you give it? {12} test test
+

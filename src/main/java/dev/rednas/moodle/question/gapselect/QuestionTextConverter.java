@@ -12,7 +12,7 @@ public class QuestionTextConverter implements ElementConverter<String> {
         Element clonedNode = node.clone();
         Elements spanNodes = clonedNode.getElementsByTag("span");
         for (int i = 0; i < spanNodes.size(); i++) {
-            spanNodes.get(i).replaceWith(new TextNode("[[" + (i + 1) + "]]"));
+            spanNodes.get(i).replaceWith(new TextNode("[[" + (i) + "]]"));
         }
         return clonedNode.text();
     }

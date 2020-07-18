@@ -13,5 +13,6 @@ public enum LanguageComponent {
     QTYPE_DESCRIPTION,
     QTYPE_ESSAY,
     QTYPE_RANDOM,
-    QTYPE_GAPSELECT
+    QTYPE_GAPSELECT,
+    QTYPE_MULTIANSWER
 }

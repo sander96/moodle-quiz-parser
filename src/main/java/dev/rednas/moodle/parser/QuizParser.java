@@ -19,6 +19,7 @@ public class QuizParser {
 
     public static Quiz parse(String htmlDocument) {
         Document document = Jsoup.parse(htmlDocument);
+        document.outputSettings().indentAmount(0).prettyPrint(false);
         Quiz quiz = new Quiz();
         quiz.setQuestions(parseQuestions(document));
         return quiz;
