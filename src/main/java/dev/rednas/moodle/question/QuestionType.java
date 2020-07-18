@@ -7,6 +7,7 @@ import dev.rednas.moodle.question.description.DescriptionQuestion;
 import dev.rednas.moodle.question.essay.EssayQuestion;
 import dev.rednas.moodle.question.gapselect.GapselectQuestion;
 import dev.rednas.moodle.question.match.MatchQuestion;
+import dev.rednas.moodle.question.multianswer.MultiAnswerQuestion;
 import dev.rednas.moodle.question.multichoice.Multichoice;
 import dev.rednas.moodle.question.numerical.NumericalQuestion;
 import dev.rednas.moodle.question.randomsamatch.RandomShortAnswerQuestion;
@@ -28,7 +29,8 @@ public enum QuestionType {
     DESCRIPTION(DescriptionQuestion.class),
     ESSAY(EssayQuestion.class),
     RANDOMSAMATCH(RandomShortAnswerQuestion.class),
-    GAPSELECT(GapselectQuestion.class);
+    GAPSELECT(GapselectQuestion.class),
+    MULTIANSWER(MultiAnswerQuestion.class);
 
     @Getter
     private final Class<? extends Question> questionClass;
