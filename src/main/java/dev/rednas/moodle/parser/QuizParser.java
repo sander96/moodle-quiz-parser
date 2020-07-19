@@ -5,6 +5,7 @@ import dev.rednas.moodle.question.QuestionType;
 import dev.rednas.moodle.quiz.Quiz;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,6 +15,7 @@ import pl.droidsonroids.jspoon.Jspoon;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class QuizParser {
 
@@ -30,9 +32,13 @@ public class QuizParser {
         List<Question> questions = new ArrayList<>();
 
         for (Element questionElement : questionElements) {
-            questions.add(parseQuestion(questionElement));
+            try {
+                questions.add(parseQuestion(questionElement));
+            } catch (Exception e) {
+                log.warn("Could not parse a question", e);
+                questions.add(null);
+            }
         }
-
         return questions;
     }
 
@@ -47,7 +53,7 @@ public class QuizParser {
         try {
             return QuestionType.valueOf(questionType);
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Question type '" + questionType + "' is not implemented");
+            throw new IllegalArgumentException("Question type '" + questionType + "' is not implemented", e);
         }
     }
 
