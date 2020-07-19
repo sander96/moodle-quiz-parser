@@ -1,4 +1,4 @@
-package dev.rednas.moodle.question;
+package dev.rednas.moodle.question.info;
 
 import org.jsoup.nodes.Element;
 import pl.droidsonroids.jspoon.ElementConverter;

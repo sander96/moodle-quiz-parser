@@ -1,6 +1,6 @@
 package dev.rednas.moodle.question.common.input;
 
-import dev.rednas.moodle.question.GradeState;
+import dev.rednas.moodle.question.info.GradeState;
 import lombok.Data;
 
 @Data

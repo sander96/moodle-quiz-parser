@@ -1,4 +1,4 @@
-package dev.rednas.moodle.question;
+package dev.rednas.moodle.question.info;
 
 import lombok.Data;
 

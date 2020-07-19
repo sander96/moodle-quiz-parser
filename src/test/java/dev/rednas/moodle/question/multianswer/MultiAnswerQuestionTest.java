@@ -1,11 +1,10 @@
 package dev.rednas.moodle.question.multianswer;
 
 import dev.rednas.moodle.parser.QuizParser;
-import dev.rednas.moodle.question.GradeState;
+import dev.rednas.moodle.question.info.GradeState;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.multianswer.subquestion.DropdownSubquestion;
 import dev.rednas.moodle.question.multianswer.subquestion.MultichoiceSubquestion;
-import dev.rednas.moodle.question.multianswer.subquestion.Subquestion;
 import dev.rednas.moodle.question.multianswer.subquestion.TextFieldSubquestion;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
