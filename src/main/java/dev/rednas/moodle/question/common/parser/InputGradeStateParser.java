@@ -1,6 +1,6 @@
 package dev.rednas.moodle.question.common.parser;
 
-import dev.rednas.moodle.question.GradeState;
+import dev.rednas.moodle.question.info.GradeState;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.jsoup.nodes.Element;

@@ -1,11 +1,12 @@
 package dev.rednas.moodle.question.multichoice;
 
 import dev.rednas.moodle.parser.QuizParser;
-import dev.rednas.moodle.question.GradeState;
+import dev.rednas.moodle.question.info.GradeState;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.selection.SelectionControl;
 import dev.rednas.moodle.question.common.input.selection.SelectionType;
+import dev.rednas.moodle.question.info.Outcome;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
@@ -48,6 +49,11 @@ class MultichoiceQuestionTest {
         assertTrue(selection3.getInput().isSelected());
         assertEquals(SelectionType.CHECKBOX, selection3.getInput().getSelectionType());
         assertEquals(GradeState.CORRECT, selection3.getInput().getGradeState());
+
+        Outcome outcome = multichoice.getOutcome();
+        assertEquals("Your answer is incorrect.", outcome.getSpecificFeedback());
+        assertEquals("General feedback...", outcome.getGeneralFeedback());
+        assertEquals("The correct answers are: Apple, Orange", outcome.getRightAnswer());
     }
 
 }

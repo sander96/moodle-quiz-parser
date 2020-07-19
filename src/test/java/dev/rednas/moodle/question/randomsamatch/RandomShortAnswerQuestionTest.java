@@ -1,7 +1,7 @@
 package dev.rednas.moodle.question.randomsamatch;
 
 import dev.rednas.moodle.parser.QuizParser;
-import dev.rednas.moodle.question.GradeState;
+import dev.rednas.moodle.question.info.GradeState;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;

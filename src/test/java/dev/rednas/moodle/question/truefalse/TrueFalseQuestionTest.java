@@ -1,6 +1,6 @@
 package dev.rednas.moodle.question.truefalse;
 
-import dev.rednas.moodle.question.GradeState;
+import dev.rednas.moodle.question.info.GradeState;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.selection.SelectionControl;
 import dev.rednas.moodle.question.common.input.selection.SelectionType;

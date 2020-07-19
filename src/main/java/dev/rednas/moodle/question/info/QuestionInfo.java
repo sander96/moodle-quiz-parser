@@ -1,4 +1,4 @@
-package dev.rednas.moodle.question;
+package dev.rednas.moodle.question.info;
 
 import dev.rednas.moodle.language.LanguageComponentConverter;
 import lombok.Data;
