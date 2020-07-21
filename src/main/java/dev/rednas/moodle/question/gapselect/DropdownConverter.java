@@ -10,7 +10,8 @@ import pl.droidsonroids.jspoon.annotation.Selector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DropdownConverter implements ElementConverter<List<Dropdown>> {
+class DropdownConverter implements ElementConverter<List<Dropdown>> {
+
     @Override
     public List<Dropdown> convert(Element node, Selector selector) {
         Elements spanNodes = node.getElementsByTag("span");
@@ -21,5 +22,4 @@ public class DropdownConverter implements ElementConverter<List<Dropdown>> {
         }
         return dropdowns;
     }
-
 }

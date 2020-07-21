@@ -1,5 +1,6 @@
 package dev.rednas.moodle.parser;
 
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.util.TestUtils;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.quiz.Quiz;

@@ -6,7 +6,7 @@ import dev.rednas.moodle.question.common.input.selection.SelectionControl;
 import dev.rednas.moodle.question.common.input.selection.SelectionType;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
-import dev.rednas.moodle.parser.QuizParser;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.quiz.Quiz;
 import org.junit.jupiter.api.Test;

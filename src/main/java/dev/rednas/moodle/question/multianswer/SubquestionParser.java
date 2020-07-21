@@ -20,7 +20,7 @@ public class SubquestionParser {
         Elements subquestions = node.select(".answer");
         for (Element subquestion : subquestions) {
             Optional<Element> outcomeNode = getMultichoiceOutcomeNode(subquestion);
-            subquestion.wrap(getWrapHtml());
+            subquestion.wrap(createWrapHtml());
             outcomeNode.ifPresent(element -> {
                 element.remove();
                 subquestion.parent().appendChild(element);
@@ -36,7 +36,7 @@ public class SubquestionParser {
         return Optional.empty();
     }
 
-    private static String getWrapHtml() {
+    private static String createWrapHtml() {
         return new Element("div").addClass("subquestion").toString();
     }
 }

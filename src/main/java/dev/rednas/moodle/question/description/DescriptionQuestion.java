@@ -10,5 +10,4 @@ public class DescriptionQuestion implements Question {
 
     @Selector(value = "div.qtext")
     private String questionText;
-
 }

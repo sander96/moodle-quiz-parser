@@ -8,6 +8,7 @@ import pl.droidsonroids.jspoon.ElementConverter;
 import pl.droidsonroids.jspoon.annotation.Selector;
 
 public class TextFieldConverter implements ElementConverter<InputWithText<TextField>> {
+
     @Override
     public InputWithText<TextField> convert(Element node, Selector selector) {
         InputWithText<TextField> textFieldWithText = new InputWithText<>();
@@ -17,10 +18,8 @@ public class TextFieldConverter implements ElementConverter<InputWithText<TextFi
         textFieldWithText.setText(node.select("label").first().text());
 
         InputGradeStateParser.parse(inputElement).ifPresent(textField::setGradeState);
-
         textField.setValue(inputElement.attr("value"));
         textFieldWithText.setInput(textField);
-
         return textFieldWithText;
     }
 }

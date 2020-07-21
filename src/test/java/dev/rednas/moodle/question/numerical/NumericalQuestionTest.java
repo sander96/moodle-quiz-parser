@@ -1,8 +1,10 @@
 package dev.rednas.moodle.question.numerical;
 
-import dev.rednas.moodle.parser.QuizParser;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
 import dev.rednas.moodle.question.common.input.selection.SelectionControl;
+import dev.rednas.moodle.question.numerical.unit.DropdownUnitField;
+import dev.rednas.moodle.question.numerical.unit.SelectionControlUnitField;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
@@ -26,8 +28,7 @@ class NumericalQuestionTest {
         assertEquals("q27:1_answer", numerical1.getTextField().getInput().getId());
         assertEquals("Answer:", numerical1.getTextField().getText());
         assertEquals("1", numerical1.getTextField().getInput().getValue());
-        assertNull(numerical1.getUnitChoice().getDropdown());
-        assertNull(numerical1.getUnitChoice().getRadioButtons());
+        assertNull(numerical1.getUnitChoice());
 
         NumericalQuestion numerical2 = (NumericalQuestion) quiz.getQuestions().get(1);
         AssertionUtils.assertQuestionInfo(numerical2, "0.90", "1.00", 2L, "partiallycorrect");
@@ -35,8 +36,7 @@ class NumericalQuestionTest {
         assertEquals("q27:2_answer", numerical2.getTextField().getInput().getId());
         assertEquals("Answer:", numerical2.getTextField().getText());
         assertEquals("1", numerical2.getTextField().getInput().getValue());
-        assertNull(numerical2.getUnitChoice().getRadioButtons());
-        Dropdown dropdown = numerical2.getUnitChoice().getDropdown();
+        Dropdown dropdown = ((DropdownUnitField) numerical2.getUnitChoice()).getValue();
         assertEquals(4, dropdown.getOptions().size());
         assertTrue(dropdown.getOptions().get(2).isSelected());
         List<String> options = List.of("Choose...", "m", "km", "cm");
@@ -48,8 +48,7 @@ class NumericalQuestionTest {
         assertEquals("q27:3_answer", numerical3.getTextField().getInput().getId());
         assertEquals("Answer:", numerical3.getTextField().getText());
         assertEquals("1", numerical3.getTextField().getInput().getValue());
-        assertNull(numerical3.getUnitChoice().getDropdown());
-        List<SelectionControl> radioButtons = numerical3.getUnitChoice().getRadioButtons();
+        List<SelectionControl> radioButtons = ((SelectionControlUnitField) numerical3.getUnitChoice()).getValue();
         assertEquals(3, radioButtons.size());
         assertTrue(radioButtons.get(2).isSelected());
     }

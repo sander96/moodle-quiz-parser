@@ -1,6 +1,6 @@
 package dev.rednas.moodle.question.description;
 
-import dev.rednas.moodle.parser.QuizParser;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.TestUtils;
 import org.junit.jupiter.api.Test;

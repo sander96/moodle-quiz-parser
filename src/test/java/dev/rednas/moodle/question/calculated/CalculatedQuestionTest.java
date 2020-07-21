@@ -1,6 +1,6 @@
 package dev.rednas.moodle.question.calculated;
 
-import dev.rednas.moodle.parser.QuizParser;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
@@ -24,7 +24,6 @@ class CalculatedQuestionTest {
         assertEquals("q34:1_answer", calculated.getTextField().getInput().getId());
         assertEquals("Answer:", calculated.getTextField().getText());
         assertEquals("33", calculated.getTextField().getInput().getValue());
-        assertNull(calculated.getUnitChoice().getDropdown());
-        assertNull(calculated.getUnitChoice().getRadioButtons());
+        assertNull(calculated.getUnitChoice());
     }
 }

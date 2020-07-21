@@ -1,20 +1,21 @@
 package dev.rednas.moodle.question.essay;
 
-import dev.rednas.moodle.question.common.input.textarea.TextArea;
+import dev.rednas.moodle.question.common.input.text.TextField;
 import org.jsoup.nodes.Element;
 import pl.droidsonroids.jspoon.ElementConverter;
 import pl.droidsonroids.jspoon.annotation.Selector;
 
 import java.util.Optional;
 
-public class TextAreaConverter implements ElementConverter<TextArea> {
+class TextFieldConverter implements ElementConverter<TextField> {
+
     @Override
-    public TextArea convert(Element node, Selector selector) {
+    public TextField convert(Element node, Selector selector) {
         if (node == null) {
             return null;
         }
 
-        TextArea textArea = new TextArea();
+        TextField textArea = new TextField();
         getTextareaValue(node).ifPresent(textArea::setValue);
         return textArea;
     }

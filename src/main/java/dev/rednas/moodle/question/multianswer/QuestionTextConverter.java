@@ -6,7 +6,8 @@ import org.jsoup.select.Elements;
 import pl.droidsonroids.jspoon.ElementConverter;
 import pl.droidsonroids.jspoon.annotation.Selector;
 
-public class QuestionTextConverter implements ElementConverter<String> {
+class QuestionTextConverter implements ElementConverter<String> {
+
     @Override
     public String convert(Element node, Selector selector) {
         Element updatedNode = SubquestionParser.wrapSubquestions(node);

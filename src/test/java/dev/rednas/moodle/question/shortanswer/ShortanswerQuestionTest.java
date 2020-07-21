@@ -1,6 +1,6 @@
 package dev.rednas.moodle.question.shortanswer;
 
-import dev.rednas.moodle.parser.QuizParser;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;

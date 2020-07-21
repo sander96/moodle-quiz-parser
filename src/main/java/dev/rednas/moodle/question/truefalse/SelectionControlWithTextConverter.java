@@ -7,7 +7,8 @@ import org.jsoup.nodes.Element;
 import pl.droidsonroids.jspoon.ElementConverter;
 import pl.droidsonroids.jspoon.annotation.Selector;
 
-public class SelectionControlWithTextConverter implements ElementConverter<InputWithText<SelectionControl>> {
+class SelectionControlWithTextConverter implements ElementConverter<InputWithText<SelectionControl>> {
+
     @Override
     public InputWithText<SelectionControl> convert(Element node, Selector selector) {
         InputWithText<SelectionControl> selectionWithText = new InputWithText<>();

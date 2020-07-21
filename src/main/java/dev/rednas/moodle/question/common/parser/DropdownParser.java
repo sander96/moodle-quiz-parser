@@ -30,6 +30,7 @@ public class DropdownParser {
     private static List<Option> parseOptions(Element tableRow) {
         List<Option> options = new ArrayList<>();
         Elements optionElements = tableRow.select("option");
+
         for (Element optionElement : optionElements) {
             Option option = new Option();
             option.setValue(optionElement.attr("value"));

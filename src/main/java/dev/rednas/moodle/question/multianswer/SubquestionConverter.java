@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class SubquestionConverter implements ElementConverter<List<Subquestion>> {
+
     @Override
     public List<Subquestion> convert(Element node, Selector selector) {
         Elements subquestionElements = SubquestionParser.wrapSubquestions(node).select(".subquestion");
@@ -60,6 +61,7 @@ public class SubquestionConverter implements ElementConverter<List<Subquestion>>
     private static MultichoiceSubquestion getMultichoice(Element subquestionNode) {
         List<InputWithText<SelectionControl>> list = new ArrayList<>();
         Element element = subquestionNode.selectFirst(".answer");
+
         for (Element child : element.children()) {
             InputWithText<SelectionControl> selection = new InputWithText<>();
             selection.setInput(SelectionControlParser.parse(child));
@@ -67,6 +69,7 @@ public class SubquestionConverter implements ElementConverter<List<Subquestion>>
             getFeedback(child, "div.specificfeedback").ifPresent(selection::setFeedback);
             list.add(selection);
         }
+
         MultichoiceSubquestion subquestion = new MultichoiceSubquestion();
         subquestion.setValue(list);
         getFeedback(subquestionNode, ".outcome").ifPresent(subquestion::setFeedback);

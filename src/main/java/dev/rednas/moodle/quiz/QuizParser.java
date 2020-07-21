@@ -1,8 +1,7 @@
-package dev.rednas.moodle.parser;
+package dev.rednas.moodle.quiz;
 
 import dev.rednas.moodle.question.Question;
 import dev.rednas.moodle.question.QuestionType;
-import dev.rednas.moodle.quiz.Quiz;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

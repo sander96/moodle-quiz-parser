@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class SelectionControlConverter implements ElementConverter<List<InputWithText<SelectionControl>>> {
+class SelectionControlConverter implements ElementConverter<List<InputWithText<SelectionControl>>> {
+
     @Override
     public List<InputWithText<SelectionControl>> convert(Element node, Selector selector) {
         List<InputWithText<SelectionControl>> selections = new ArrayList<>();

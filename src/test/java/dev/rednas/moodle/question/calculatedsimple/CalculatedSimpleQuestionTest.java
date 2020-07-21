@@ -1,13 +1,13 @@
 package dev.rednas.moodle.question.calculatedsimple;
 
-import dev.rednas.moodle.parser.QuizParser;
+import dev.rednas.moodle.quiz.QuizParser;
+import dev.rednas.moodle.question.numerical.unit.SelectionControlUnitField;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 class CalculatedSimpleQuestionTest {
 
@@ -23,7 +23,6 @@ class CalculatedSimpleQuestionTest {
         assertEquals("q25:1_answer", calculatedsimple.getTextField().getInput().getId());
         assertEquals("Answer:", calculatedsimple.getTextField().getText());
         assertEquals("5", calculatedsimple.getTextField().getInput().getValue());
-        assertNull(calculatedsimple.getUnitChoice().getDropdown());
-        assertEquals(3, calculatedsimple.getUnitChoice().getRadioButtons().size());
+        assertEquals(3, ((SelectionControlUnitField) calculatedsimple.getUnitChoice()).getValue().size());
     }
 }
