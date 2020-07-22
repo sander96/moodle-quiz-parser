@@ -3,11 +3,8 @@ package dev.rednas.moodle.language;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -30,31 +27,16 @@ public class LanguageUtils {
 
     private static Map<String, Map<String, String>> initialize() {
         Map<String, Map<String, String>> map = new HashMap<>();
+        List<String> languageFolders = ResourceUtils.getResourcesNames("/langpack");
 
-        try {
-            File[] languagePacksFolder = new File(LanguageUtils.class.getResource("/langpack").toURI()).listFiles();
-            if (languagePacksFolder == null) {
-                throw new RuntimeException("Not a folder");
-            }
-
-            for (File languageFolder : languagePacksFolder) {
-                if (languageFolder.listFiles() == null) {
-                    throw new RuntimeException("Not a folder");
-                }
-
-                for (File file : languageFolder.listFiles()) {
-                    if (file.getName().equals("question.php")) {
-                        String content = new String(Files.readAllBytes(file.toPath()));
-                        Map<String, String> values = parseLocalizedStringsAndIdentifiers(content);
-                        map.put(languageFolder.getName(), values);
-                    }
-                }
-            }
-
-            return map;
-        } catch (URISyntaxException | IOException e) {
-            throw new RuntimeException(e);
+        for (String language : languageFolders) {
+            String path = "/langpack/" + language + "/question.php";
+            String content = ResourceUtils.getResourceContent(path);
+            Map<String, String> values = parseLocalizedStringsAndIdentifiers(content);
+            map.put(language, values);
         }
+
+        return map;
     }
 
     private static Map<String, String> parseLocalizedStringsAndIdentifiers(String fileContent) {
