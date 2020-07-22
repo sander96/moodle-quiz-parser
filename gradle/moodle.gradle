@@ -1,0 +1,52 @@
+task setupMoodleLangpacks {
+    group = 'moodle'
+    description = 'Download moodle language packs and extract necessary files'
+
+    dependsOn 'downloadMoodleLangpacks'
+
+    doLast {
+        Set<File> files = fileTree('src/main/resources/langpack/').files
+        for (File file : files) {
+            println(file.path)
+            copy {
+                from zipTree(file.path).matching {
+                    include '*/question.php', '*/qtype_*.php'
+                }
+                into 'src/main/resources/langpack/'
+            }
+            file.delete()
+        }
+    }
+}
+
+task downloadMoodleLangpacks {
+    group = 'moodle'
+    description = 'Clean and download moodle language packs'
+
+    dependsOn 'cleanMoodleLangpacks'
+
+    doLast {
+        new File('src/main/resources').mkdir()
+        def langpackFolder = new File('src/main/resources/langpack/')
+        langpackFolder.mkdir()
+
+        def baseUrl = 'https://download.moodle.org/langpack/3.9/'
+        List<String> languages = List.of('en', 'et')    // currently supporting only English and Estonian
+        for (String language : languages) {
+            def url = baseUrl + language + '.zip'
+            println('Downloading "' + language + '" language pack from: ' + url)
+
+            def languageFile = new File(langpackFolder, language + '.zip')
+            new URL(url).withInputStream { i -> languageFile.withOutputStream { it << i } }
+        }
+    }
+}
+
+task cleanMoodleLangpacks {
+    group = 'moodle'
+    description = 'Delete moodle language packs'
+
+    doLast {
+        new File('src/main/resources/langpack/').deleteDir()
+    }
+}

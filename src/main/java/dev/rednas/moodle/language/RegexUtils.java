@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class RegexUtils {
+class RegexUtils {
 
     public static String removeEscapeSlash(String string) {
         return string.replaceAll("\\\\'", "'");
