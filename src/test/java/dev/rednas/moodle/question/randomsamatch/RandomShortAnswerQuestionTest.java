@@ -23,7 +23,7 @@ class RandomShortAnswerQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
+        AssertionUtils.assertQuestionInfo(question, 1.0f, 1.0f, 1L, "correct");
 
         RandomShortAnswerQuestion randomQuestion = (RandomShortAnswerQuestion) question;
         assertEquals("Question text...", randomQuestion.getQuestionText());

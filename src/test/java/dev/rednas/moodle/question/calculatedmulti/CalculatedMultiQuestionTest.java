@@ -24,7 +24,7 @@ class CalculatedMultiQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "-0.83", "1.00", 1L, "incorrect");
+        AssertionUtils.assertQuestionInfo(question, -0.83f, 1.0f, 1L, "incorrect");
 
         Multichoice multichoice = (Multichoice) question;
         assertEquals("3.6m * 3.3m is ...", multichoice.getQuestionText());

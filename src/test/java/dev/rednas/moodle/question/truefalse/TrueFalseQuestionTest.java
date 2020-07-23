@@ -22,7 +22,7 @@ class TrueFalseQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered");
+        AssertionUtils.assertQuestionInfo(question, null, 1.0f, 1L, "notyetanswered");
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());
@@ -50,7 +50,7 @@ class TrueFalseQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect");
+        AssertionUtils.assertQuestionInfo(question, 0.0f, 1.0f, 1L, "incorrect");
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());
@@ -78,7 +78,7 @@ class TrueFalseQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
+        AssertionUtils.assertQuestionInfo(question, 1.0f, 1.0f, 1L, "correct");
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());

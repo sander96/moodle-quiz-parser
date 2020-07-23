@@ -23,7 +23,7 @@ class MatchQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered");
+        AssertionUtils.assertQuestionInfo(question, null, 1.0f, 1L, "notyetanswered");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
         assertEquals("This question is to test your fruit color knowledge.", matchQuestion.getQuestionText());
@@ -34,15 +34,13 @@ class MatchQuestionTest {
         Dropdown dropdown1 = dropdownInputWithText1.getInput();
         assertEquals("Orange is mostly", dropdownInputWithText1.getText());
         assertNull(dropdown1.getGradeState());
-        AssertionUtils.assertDropdownOptions(dropdown1, 0,
-                options);
+        AssertionUtils.assertDropdownOptions(dropdown1, 0, options);
 
         InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
         Dropdown dropdown2 = dropdownInputWithText2.getInput();
         assertEquals("Apple is", dropdownInputWithText2.getText());
         assertNull(dropdown2.getGradeState());
-        AssertionUtils.assertDropdownOptions(dropdown2, 0,
-                options);
+        AssertionUtils.assertDropdownOptions(dropdown2, 0, options);
     }
 
     @Test
@@ -52,7 +50,7 @@ class MatchQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect");
+        AssertionUtils.assertQuestionInfo(question, 0.0f, 1.0f, 1L, "incorrect");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
         assertEquals("This question is to test your fruit color knowledge.", matchQuestion.getQuestionText());
@@ -63,15 +61,13 @@ class MatchQuestionTest {
         Dropdown dropdown1 = dropdownInputWithText1.getInput();
         assertEquals("Apple is", dropdownInputWithText1.getText());
         assertEquals(GradeState.INCORRECT, dropdown1.getGradeState());
-        AssertionUtils.assertDropdownOptions(dropdown1, 1,
-                options);
+        AssertionUtils.assertDropdownOptions(dropdown1, 1, options);
 
         InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
         Dropdown dropdown2 = dropdownInputWithText2.getInput();
         assertEquals("Orange is mostly", dropdownInputWithText2.getText());
         assertEquals(GradeState.INCORRECT, dropdown1.getGradeState());
-        AssertionUtils.assertDropdownOptions(dropdown2, 1,
-                options);
+        AssertionUtils.assertDropdownOptions(dropdown2, 1, options);
     }
 
     @Test
@@ -81,7 +77,7 @@ class MatchQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
+        AssertionUtils.assertQuestionInfo(question, 1.0f, 1.0f, 1L, "correct");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
         assertEquals("This question is to test your fruit color knowledge.", matchQuestion.getQuestionText());
@@ -108,7 +104,7 @@ class MatchQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "0.50", "1.00", 1L, "partiallycorrect");
+        AssertionUtils.assertQuestionInfo(question, 0.5f, 1.0f, 1L, "partiallycorrect");
 
         MatchQuestion matchQuestion = (MatchQuestion) question;
         assertEquals("This question is to test your fruit color knowledge.", matchQuestion.getQuestionText());
@@ -119,15 +115,13 @@ class MatchQuestionTest {
         Dropdown dropdown1 = dropdownInputWithText1.getInput();
         assertEquals("Orange is mostly", dropdownInputWithText1.getText());
         assertEquals(GradeState.CORRECT, dropdown1.getGradeState());
-        AssertionUtils.assertDropdownOptions(dropdown1, 5,
-                options);
+        AssertionUtils.assertDropdownOptions(dropdown1, 5, options);
 
         InputWithText<Dropdown> dropdownInputWithText2 = matchQuestion.getDropdowns().get(1);
         Dropdown dropdown2 = dropdownInputWithText2.getInput();
         assertEquals("Apple is", dropdownInputWithText2.getText());
         assertEquals(GradeState.INCORRECT, dropdown2.getGradeState());
-        AssertionUtils.assertDropdownOptions(dropdown2, 4,
-                options);
+        AssertionUtils.assertDropdownOptions(dropdown2, 4, options);
     }
 
 }

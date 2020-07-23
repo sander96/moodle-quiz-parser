@@ -2,6 +2,7 @@ package dev.rednas.moodle.language;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,5 +24,11 @@ class LanguageUtilsTest {
 
         Optional<String> identifier = LanguageUtils.getIdentifier(localizedString);
         assertEquals(Optional.of("matchgrades_help"), identifier);
+    }
+
+    @Test
+    void getOriginalLocalizedStrings() {
+        List<String> originalLocalizedStrings = LanguageUtils.getOriginalLocalizedStrings("attemptfinishedsubmitting");
+        assertEquals(59, originalLocalizedStrings.size());
     }
 }
