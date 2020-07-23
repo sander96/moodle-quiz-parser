@@ -29,8 +29,8 @@ class QuizParserTest {
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
         assertEquals(1L, question.getInfo().getNumber());
         assertEquals("correct", question.getInfo().getState());
-        assertEquals("1.00", question.getInfo().getGrade().getMax());
-        assertEquals("1.00", question.getInfo().getGrade().getMark());
+        assertEquals(1.0f, question.getInfo().getGrade().getMax());
+        assertEquals(1.0f, question.getInfo().getGrade().getMark());
     }
 
     @Test

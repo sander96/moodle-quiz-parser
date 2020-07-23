@@ -18,7 +18,7 @@ class ShortanswerQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, null, "1.00", 1L, "notyetanswered");
+        AssertionUtils.assertQuestionInfo(question, null, 1.0f, 1L, "notyetanswered");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());
@@ -34,7 +34,7 @@ class ShortanswerQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "0.00", "1.00", 1L, "incorrect");
+        AssertionUtils.assertQuestionInfo(question, 0.0f, 1.0f, 1L, "incorrect");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());
@@ -50,7 +50,7 @@ class ShortanswerQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "1.00", "1.00", 1L, "correct");
+        AssertionUtils.assertQuestionInfo(question, 1.0f, 1.0f, 1L, "correct");
 
         ShortanswerQuestion shortanswer = (ShortanswerQuestion) question;
         assertEquals("What color is an apple?", shortanswer.getQuestionText());

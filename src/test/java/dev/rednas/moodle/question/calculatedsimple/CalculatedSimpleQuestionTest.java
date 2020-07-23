@@ -18,7 +18,7 @@ class CalculatedSimpleQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         CalculatedSimpleQuestion calculatedsimple = (CalculatedSimpleQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(calculatedsimple, "0.00", "1.00", 1L, "incorrect");
+        AssertionUtils.assertQuestionInfo(calculatedsimple, 0.0f, 1.0f, 1L, "incorrect");
         assertEquals("Abc 1.2m * 4.4m is ...", calculatedsimple.getQuestionText());
         assertEquals("q25:1_answer", calculatedsimple.getTextField().getInput().getId());
         assertEquals("Answer:", calculatedsimple.getTextField().getText());

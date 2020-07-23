@@ -25,7 +25,7 @@ class MultiAnswerQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "2.22", "5.00", 1L, "partiallycorrect");
+        AssertionUtils.assertQuestionInfo(question, 2.22f, 5.0f, 1L, "partiallycorrect");
         MultiAnswerQuestion multiAnswerQuestion = (MultiAnswerQuestion) question;
 
         String resource = TestUtils.getResource("data", "multianswer", "multianswer1.txt");

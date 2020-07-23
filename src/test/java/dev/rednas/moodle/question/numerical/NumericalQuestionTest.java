@@ -23,7 +23,7 @@ class NumericalQuestionTest {
         assertEquals(3, quiz.getQuestions().size());
 
         NumericalQuestion numerical1 = (NumericalQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(numerical1, "0.90", "1.00", 1L, "partiallycorrect");
+        AssertionUtils.assertQuestionInfo(numerical1, 0.9f, 1.0f, 1L, "partiallycorrect");
         assertEquals("0.5m + 0.5m is equal to", numerical1.getQuestionText());
         assertEquals("q27:1_answer", numerical1.getTextField().getInput().getId());
         assertEquals("Answer:", numerical1.getTextField().getText());
@@ -31,7 +31,7 @@ class NumericalQuestionTest {
         assertNull(numerical1.getUnitChoice());
 
         NumericalQuestion numerical2 = (NumericalQuestion) quiz.getQuestions().get(1);
-        AssertionUtils.assertQuestionInfo(numerical2, "0.90", "1.00", 2L, "partiallycorrect");
+        AssertionUtils.assertQuestionInfo(numerical2, 0.9f, 1.0f, 2L, "partiallycorrect");
         assertEquals("0.5m + 0.5m is equal to", numerical2.getQuestionText());
         assertEquals("q27:2_answer", numerical2.getTextField().getInput().getId());
         assertEquals("Answer:", numerical2.getTextField().getText());
@@ -43,7 +43,7 @@ class NumericalQuestionTest {
         AssertionUtils.assertDropdownOptions(dropdown, 2, options);
 
         NumericalQuestion numerical3 = (NumericalQuestion) quiz.getQuestions().get(2);
-        AssertionUtils.assertQuestionInfo(numerical3, "0.90", "1.00", 3L, "partiallycorrect");
+        AssertionUtils.assertQuestionInfo(numerical3, 0.9f, 1.0f, 3L, "partiallycorrect");
         assertEquals("0.5m + 0.5m is equal to", numerical3.getQuestionText());
         assertEquals("q27:3_answer", numerical3.getTextField().getInput().getId());
         assertEquals("Answer:", numerical3.getTextField().getText());

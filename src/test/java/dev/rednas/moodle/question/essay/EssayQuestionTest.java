@@ -19,14 +19,14 @@ class EssayQuestionTest {
         assertEquals(3, quiz.getQuestions().size());
 
         GradedQuestion question1 = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question1, null, "1.00", 1L, "notyetanswered");
+        AssertionUtils.assertQuestionInfo(question1, null, 1.0f, 1L, "notyetanswered");
         EssayQuestion essay1 = (EssayQuestion) question1;
         assertEquals("This is essay question text...", essay1.getQuestionText());
         assertEquals("<p>Response...<br></p>", essay1.getTextArea().getValue());
         assertNull(essay1.getFiles());
 
         GradedQuestion question3 = (GradedQuestion) quiz.getQuestions().get(2);
-        AssertionUtils.assertQuestionInfo(question3, null, "1.00", 3L, "notyetanswered");
+        AssertionUtils.assertQuestionInfo(question3, null, 1.0f, 3L, "notyetanswered");
         EssayQuestion essay3 = (EssayQuestion) question3;
         assertEquals("This is essay question text...", essay3.getQuestionText());
         assertNull(essay3.getTextArea().getValue());
@@ -40,14 +40,14 @@ class EssayQuestionTest {
         assertEquals(3, quiz.getQuestions().size());
 
         GradedQuestion question1 = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question1, "1.00", "1.00", 1L, "complete");
+        AssertionUtils.assertQuestionInfo(question1, 1.0f, 1.0f, 1L, "complete");
         EssayQuestion essay1 = (EssayQuestion) question1;
         assertEquals("This is essay question text...", essay1.getQuestionText());
         assertEquals("Test test", essay1.getTextArea().getValue());
         assertNull(essay1.getFiles());
 
         GradedQuestion question3 = (GradedQuestion) quiz.getQuestions().get(2);
-        AssertionUtils.assertQuestionInfo(question3, "1.00", "1.00", 3L, "complete");
+        AssertionUtils.assertQuestionInfo(question3, 1.0f, 1.0f, 3L, "complete");
         EssayQuestion essay3 = (EssayQuestion) question3;
         assertEquals("This is essay question text...", essay3.getQuestionText());
         assertNull(essay3.getTextArea().getValue());

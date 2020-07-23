@@ -18,7 +18,7 @@ class CalculatedQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         CalculatedQuestion calculated = (CalculatedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(calculated, "0.00", "1.00", 1L, "incorrect");
+        AssertionUtils.assertQuestionInfo(calculated, 0.0f, 1.0f, 1L, "incorrect");
         assertEquals("Calculate the area of a rectangle. 4.7 is the base and 7.7 is the height.",
                 calculated.getQuestionText());
         assertEquals("q34:1_answer", calculated.getTextField().getInput().getId());

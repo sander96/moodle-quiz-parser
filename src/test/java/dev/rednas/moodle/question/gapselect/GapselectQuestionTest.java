@@ -22,7 +22,7 @@ class GapselectQuestionTest {
         assertEquals(1, quiz.getQuestions().size());
 
         GradedQuestion question = (GradedQuestion) quiz.getQuestions().get(0);
-        AssertionUtils.assertQuestionInfo(question, "0.80", "1.00", 1L, "partiallycorrect");
+        AssertionUtils.assertQuestionInfo(question, 0.8f, 1.0f, 1L, "partiallycorrect");
 
         GapselectQuestion gapselectQuestion = (GapselectQuestion) question;
         String questionText = "The largest number is [[0]] then followed by [[1]]. The smallest is [[2]]. [[3]] comes before [[4]].";

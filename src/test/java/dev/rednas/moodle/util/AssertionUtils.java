@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AssertionUtils {
 
-    public static void assertQuestionInfo(GradedQuestion question, String mark, String max,
+    public static void assertQuestionInfo(GradedQuestion question, Float mark, Float max,
                                           Long number, String state) {
         assertEquals(mark, question.getInfo().getGrade().getMark());
         assertEquals(max, question.getInfo().getGrade().getMax());
