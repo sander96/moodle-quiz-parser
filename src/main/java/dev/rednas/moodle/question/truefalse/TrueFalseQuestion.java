@@ -15,9 +15,6 @@ public class TrueFalseQuestion extends GradedQuestion {
     @Selector(value = "div.qtext")
     private String questionText;
 
-    @Selector(value = "div.prompt")
-    private String prompt;
-
     @Selector(value = "div.answer > div.r0", converter = SelectionControlWithTextConverter.class)
     private InputWithText<SelectionControl> trueRadioButton;
 

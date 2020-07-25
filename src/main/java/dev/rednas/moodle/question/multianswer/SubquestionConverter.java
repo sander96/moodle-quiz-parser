@@ -5,6 +5,7 @@ import dev.rednas.moodle.question.common.input.selection.SelectionControl;
 import dev.rednas.moodle.question.common.input.text.TextField;
 import dev.rednas.moodle.question.common.parser.DropdownParser;
 import dev.rednas.moodle.question.common.parser.SelectionControlParser;
+import dev.rednas.moodle.question.common.parser.TextFieldParser;
 import dev.rednas.moodle.question.multianswer.subquestion.DropdownSubquestion;
 import dev.rednas.moodle.question.multianswer.subquestion.MultichoiceSubquestion;
 import dev.rednas.moodle.question.multianswer.subquestion.Subquestion;
@@ -50,9 +51,7 @@ public class SubquestionConverter implements ElementConverter<List<Subquestion>>
 
     private static TextFieldSubquestion getTextField(Element subquestionNode) {
         TextFieldSubquestion subquestion = new TextFieldSubquestion();
-        TextField textField = new TextField();
-        Element input = subquestionNode.selectFirst("input");
-        textField.setValue(input.attr("value"));
+        TextField textField = TextFieldParser.parse(subquestionNode.selectFirst("input"));
         subquestion.setValue(textField);
         getFeedback(subquestionNode, "span.feedbackspan").ifPresent(subquestion::setFeedback);
         return subquestion;

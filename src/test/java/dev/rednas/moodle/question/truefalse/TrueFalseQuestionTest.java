@@ -26,7 +26,6 @@ class TrueFalseQuestionTest {
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());
-        assertEquals("Select one:", truefalseQuestion.getPrompt());
 
         InputWithText<SelectionControl> radioButtonWithTextTrue = truefalseQuestion.getTrueRadioButton();
         assertEquals("q3:1_answertrue", radioButtonWithTextTrue.getInput().getId());
@@ -54,7 +53,6 @@ class TrueFalseQuestionTest {
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());
-        assertEquals("Select one:", truefalseQuestion.getPrompt());
 
         InputWithText<SelectionControl> radioButtonWithTextTrue = truefalseQuestion.getTrueRadioButton();
         assertEquals("q3:1_answertrue", radioButtonWithTextTrue.getInput().getId());
@@ -82,7 +80,6 @@ class TrueFalseQuestionTest {
 
         TrueFalseQuestion truefalseQuestion = (TrueFalseQuestion) question;
         assertEquals("5 + 5 = 10", truefalseQuestion.getQuestionText());
-        assertEquals("Select one:", truefalseQuestion.getPrompt());
 
         InputWithText<SelectionControl> radioButtonWithTextTrue = truefalseQuestion.getTrueRadioButton();
         assertEquals("q4:1_answertrue", radioButtonWithTextTrue.getInput().getId());
