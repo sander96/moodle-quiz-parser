@@ -13,11 +13,7 @@ import java.util.List;
 class ResourceUtils {
 
     public static List<String> getResourcesNames(String path) {
-        try {
-            InputStream resource = getResourceAsStream(path);
-            if (resource == null) {
-                throw new InvalidResourceException(getInvalidPathErrorMessage(path));
-            }
+        try (InputStream resource = getResourceAsStream(path)) {
             return IOUtils.readLines(resource, StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new InvalidResourceException(getFailedToReadResourceErrorMessage(path), e);
@@ -25,11 +21,7 @@ class ResourceUtils {
     }
 
     public static String getResourceContent(String path) {
-        try {
-            InputStream resource = getResourceAsStream(path);
-            if (resource == null) {
-                throw new InvalidResourceException(getInvalidPathErrorMessage(path));
-            }
+        try (InputStream resource = getResourceAsStream(path)) {
             return IOUtils.toString(resource, StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new InvalidResourceException(getFailedToReadResourceErrorMessage(path), e);
@@ -37,14 +29,18 @@ class ResourceUtils {
     }
 
     private static InputStream getResourceAsStream(String path) {
-        return ResourceUtils.class.getResourceAsStream(path);
+        InputStream resource = ResourceUtils.class.getResourceAsStream(path);
+        if (resource == null) {
+            throw new InvalidResourceException(getInvalidPathErrorMessage(path));
+        }
+        return resource;
     }
 
     private static String getInvalidPathErrorMessage(String path) {
-        return "Resource with path: '" + path + "' does not exist";
+        return String.format("Resource with path '%s' does not exist", path);
     }
 
     private static String getFailedToReadResourceErrorMessage(String path) {
-        return "Failed to read the resource with path: '" + path + "'";
+        return String.format("Failed to read the resource with path: '%s'", path);
     }
 }
