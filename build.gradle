@@ -2,11 +2,12 @@ plugins {
     id 'java'
     id 'idea'
     id 'io.freefair.lombok' version "5.1.1"
-    id "name.remal.check-dependency-updates" version "1.0.211"
+    id 'name.remal.check-dependency-updates' version '1.0.211'
+    id 'maven'
 }
 
 group 'dev.rednas.moodle'
-version '0.0.1-SNAPSHOT'
+version '1.0.0'
 
 repositories {
     mavenCentral()
