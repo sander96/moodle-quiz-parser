@@ -24,4 +24,10 @@ class LanguageUtilsTest {
         Optional<String> identifier = LanguageUtils.getIdentifier(localizedString);
         assertEquals(Optional.of("matchgrades_help"), identifier);
     }
+
+    @Test
+    void getEmptyIdentifier() {
+        Optional<String> identifier = LanguageUtils.getIdentifier("invalid-string");
+        assertEquals(Optional.empty(), identifier);
+    }
 }

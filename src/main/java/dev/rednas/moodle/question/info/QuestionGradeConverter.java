@@ -10,7 +10,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class QuestionGradeConverter implements ElementConverter<QuestionGrade> {
-
     public static final String NUMBER_REGEX = "(-?\\d+[.,]?\\d*)";
 
     @Override

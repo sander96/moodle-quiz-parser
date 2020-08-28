@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class DropdownSubquestion extends Subquestion {
+@EqualsAndHashCode
+public class DropdownSubquestion implements Subquestion {
     private Dropdown value;
     private String feedback;
 }

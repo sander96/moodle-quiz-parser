@@ -8,6 +8,7 @@ import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -41,5 +42,10 @@ class RandomShortAnswerQuestionTest {
         assertEquals("What color is an apple?", dropdownInputWithText2.getText());
         assertEquals(GradeState.CORRECT, dropdown1.getGradeState());
         AssertionUtils.assertDropdownOptions(dropdown2, 2, options);
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(RandomShortAnswerQuestion.class).verify();
     }
 }

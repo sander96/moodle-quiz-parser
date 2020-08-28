@@ -1,12 +1,13 @@
 package dev.rednas.moodle.question.gapselect;
 
-import dev.rednas.moodle.quiz.QuizParser;
-import dev.rednas.moodle.question.info.GradeState;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
+import dev.rednas.moodle.question.info.GradeState;
 import dev.rednas.moodle.quiz.Quiz;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -33,5 +34,11 @@ class GapselectQuestionTest {
         List<String> options = List.of("", "300", "200", "100");
         AssertionUtils.assertDropdownOptions(dropdown1, 1, options);
         assertEquals(GradeState.CORRECT, dropdown1.getGradeState());
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(GapselectQuestion.class).verify();
+
     }
 }

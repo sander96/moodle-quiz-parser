@@ -8,8 +8,8 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class MultichoiceSubquestion extends Subquestion {
+@EqualsAndHashCode
+public class MultichoiceSubquestion implements Subquestion {
     private List<InputWithText<SelectionControl>> value;
     private String feedback;
 }

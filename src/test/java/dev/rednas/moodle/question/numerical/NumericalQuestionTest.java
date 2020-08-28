@@ -8,6 +8,7 @@ import dev.rednas.moodle.question.numerical.unit.SelectionControlUnitField;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -51,5 +52,10 @@ class NumericalQuestionTest {
         List<SelectionControl> radioButtons = ((SelectionControlUnitField) numerical3.getUnitChoice()).getValue();
         assertEquals(3, radioButtons.size());
         assertTrue(radioButtons.get(2).isSelected());
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(NumericalQuestion.class).verify();
     }
 }

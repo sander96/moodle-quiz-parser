@@ -5,6 +5,7 @@ import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -57,5 +58,10 @@ class ShortanswerQuestionTest {
         assertEquals("q9:1_answer", shortanswer.getTextField().getInput().getId());
         assertEquals("Answer:", shortanswer.getTextField().getText());
         assertEquals("green", shortanswer.getTextField().getInput().getValue());
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(ShortanswerQuestion.class).verify();
     }
 }
