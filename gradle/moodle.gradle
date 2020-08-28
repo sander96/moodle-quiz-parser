@@ -1,0 +1,51 @@
+task setupMoodleLangpacks {
+    group = 'moodle'
+    description = 'Download moodle language packs and extract necessary files'
+
+    dependsOn 'downloadMoodleLangpacks'
+
+    doLast {
+        Set<File> files = fileTree('src/main/resources/langpack/').files
+        for (File file : files) {
+            println(file.path)
+            copy {
+                from zipTree(file.path).matching {
+                    include '*/question.php'
+                }
+                into 'src/main/resources/langpack/'
+            }
+            file.delete()
+        }
+    }
+}
+
+task downloadMoodleLangpacks {
+    group = 'moodle'
+    description = 'Clean and download moodle language packs'
+
+    dependsOn 'cleanMoodleLangpacks'
+
+    doLast {
+        def langpackFolder = new File('src/main/resources/langpack/')
+        langpackFolder.mkdir()
+        def baseUrl = 'https://download.moodle.org/langpack/3.9/'
+        def languages = new File('src/main/resources/languages.txt').readLines()
+
+        for (String languageFolder : languages) {
+            def url = baseUrl + languageFolder + '.zip'
+            println('Downloading "' + languageFolder + '" language pack from: ' + url)
+
+            def languageFile = new File(langpackFolder, languageFolder + '.zip')
+            new URL(url).withInputStream { i -> languageFile.withOutputStream { it << i } }
+        }
+    }
+}
+
+task cleanMoodleLangpacks {
+    group = 'moodle'
+    description = 'Delete moodle language packs'
+
+    doLast {
+        new File('src/main/resources/langpack/').deleteDir()
+    }
+}

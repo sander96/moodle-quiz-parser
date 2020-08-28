@@ -1,18 +1,37 @@
 plugins {
     id 'java'
+    id 'idea'
+    id 'io.freefair.lombok' version "5.1.1"
+    id 'name.remal.check-dependency-updates' version '1.0.211'
+    id 'maven'
 }
 
 group 'dev.rednas.moodle'
-version '0.0.1-SNAPSHOT'
+version '1.0.0'
 
 repositories {
     mavenCentral()
 }
 
+apply from: 'gradle/moodle.gradle'
+
 dependencies {
-    testCompile 'org.junit.jupiter:junit-jupiter:5.6.2'
+    implementation 'org.jsoup:jsoup:1.13.1'
+    implementation 'pl.droidsonroids:jspoon:1.3.2'
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'commons-io:commons-io:2.7'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+    testImplementation 'org.mockito:mockito-inline:3.5.7'
+    testImplementation 'nl.jqno.equalsverifier:equalsverifier:3.4.2'
 }
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
