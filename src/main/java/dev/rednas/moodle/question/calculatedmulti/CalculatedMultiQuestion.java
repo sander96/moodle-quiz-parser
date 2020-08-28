@@ -1,6 +1,8 @@
 package dev.rednas.moodle.question.calculatedmulti;
 
-import dev.rednas.moodle.question.multichoice.Multichoice;
+import dev.rednas.moodle.question.multichoice.MultichoiceQuestion;
+import lombok.EqualsAndHashCode;
 
-public class CalculatedMultiQuestion extends Multichoice {
+@EqualsAndHashCode(callSuper = true)
+public class CalculatedMultiQuestion extends MultichoiceQuestion {
 }

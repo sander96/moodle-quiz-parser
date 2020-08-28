@@ -1,9 +1,10 @@
 package dev.rednas.moodle.question.calculated;
 
-import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.quiz.Quiz;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,5 +26,10 @@ class CalculatedQuestionTest {
         assertEquals("Answer:", calculated.getTextField().getText());
         assertEquals("33", calculated.getTextField().getInput().getValue());
         assertNull(calculated.getUnitChoice());
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(CalculatedQuestion.class).verify();
     }
 }

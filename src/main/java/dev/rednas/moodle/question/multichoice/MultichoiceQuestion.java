@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Multichoice extends GradedQuestion {
+public class MultichoiceQuestion extends GradedQuestion {
 
     @Selector(value = "div.qtext")
     private String questionText;

@@ -1,10 +1,11 @@
 package dev.rednas.moodle.question.essay;
 
-import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.quiz.Quiz;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -52,5 +53,10 @@ class EssayQuestionTest {
         assertEquals("This is essay question text...", essay3.getQuestionText());
         assertNull(essay3.getTextArea().getValue());
         assertEquals(1, essay3.getFiles().size());
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(EssayQuestion.class).verify();
     }
 }

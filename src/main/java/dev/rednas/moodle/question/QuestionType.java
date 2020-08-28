@@ -8,7 +8,7 @@ import dev.rednas.moodle.question.essay.EssayQuestion;
 import dev.rednas.moodle.question.gapselect.GapselectQuestion;
 import dev.rednas.moodle.question.match.MatchQuestion;
 import dev.rednas.moodle.question.multianswer.MultiAnswerQuestion;
-import dev.rednas.moodle.question.multichoice.Multichoice;
+import dev.rednas.moodle.question.multichoice.MultichoiceQuestion;
 import dev.rednas.moodle.question.numerical.NumericalQuestion;
 import dev.rednas.moodle.question.randomsamatch.RandomShortAnswerQuestion;
 import dev.rednas.moodle.question.shortanswer.ShortanswerQuestion;
@@ -22,7 +22,7 @@ public enum QuestionType {
     SHORTANSWER(ShortanswerQuestion.class),
     MATCH(MatchQuestion.class),
     NUMERICAL(NumericalQuestion.class),
-    MULTICHOICE(Multichoice.class),
+    MULTICHOICE(MultichoiceQuestion.class),
     CALCULATED(CalculatedQuestion.class),
     CALCULATEDSIMPLE(CalculatedSimpleQuestion.class),
     CALCULATEDMULTI(CalculatedMultiQuestion.class),

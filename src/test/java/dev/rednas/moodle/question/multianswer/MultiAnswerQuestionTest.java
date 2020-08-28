@@ -9,6 +9,7 @@ import dev.rednas.moodle.question.multianswer.subquestion.TextFieldSubquestion;
 import dev.rednas.moodle.quiz.Quiz;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -46,5 +47,10 @@ class MultiAnswerQuestionTest {
         assertEquals(GradeState.PARTIALLY_CORRECT, subquestion9.getValue().get(3).getInput().getGradeState());
         assertTrue(subquestion9.getValue().get(3).getInput().isSelected());
         assertEquals("Mark 1.00 out of 2.00 The correct answer is: 3. Correct answer", subquestion9.getFeedback());
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(MultiAnswerQuestion.class).verify();
     }
 }

@@ -9,6 +9,7 @@ import dev.rednas.moodle.util.TestUtils;
 import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.quiz.Quiz;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -94,5 +95,10 @@ class TrueFalseQuestionTest {
         assertFalse(radioButtonWithTextFalse.getInput().isSelected());
         assertNull(radioButtonWithTextFalse.getInput().getGradeState());
         assertEquals(SelectionType.RADIO, radioButtonWithTextFalse.getInput().getSelectionType());
+    }
+
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(TrueFalseQuestion.class).verify();
     }
 }

@@ -1,8 +1,8 @@
 plugins {
     id 'java'
     id 'idea'
-    id 'io.freefair.lombok' version "5.1.0"
-    id "name.remal.check-dependency-updates" version "1.0.208"
+    id 'io.freefair.lombok' version "5.1.1"
+    id "name.remal.check-dependency-updates" version "1.0.211"
 }
 
 group 'dev.rednas.moodle'
@@ -21,7 +21,8 @@ dependencies {
     implementation 'commons-io:commons-io:2.7'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
-    testImplementation 'org.mockito:mockito-inline:3.4.6'
+    testImplementation 'org.mockito:mockito-inline:3.5.7'
+    testImplementation 'nl.jqno.equalsverifier:equalsverifier:3.4.2'
 }
 
 test {

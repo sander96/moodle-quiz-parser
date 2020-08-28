@@ -6,8 +6,6 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.jsoup.nodes.Element;
 
-import java.util.Optional;
-
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SelectionControlParser {
 
@@ -16,16 +14,13 @@ public class SelectionControlParser {
         SelectionControl selectionControl = new SelectionControl();
         selectionControl.setId(input.id());
         selectionControl.setSelected(input.hasAttr("checked"));
-        parseType(input).ifPresent(selectionControl::setSelectionType);
+        selectionControl.setSelectionType(parseType(input));
         InputGradeStateParser.parse(node).ifPresent(selectionControl::setGradeState);
         return selectionControl;
     }
 
-    private static Optional<SelectionType> parseType(Element inputNode) {
-        if (inputNode.hasAttr("type")) {
-            String type = inputNode.attr("type").toUpperCase();
-            return Optional.of(SelectionType.valueOf(type));
-        }
-        return Optional.empty();
+    private static SelectionType parseType(Element inputNode) {
+        String type = inputNode.attr("type").toUpperCase();
+        return SelectionType.valueOf(type);
     }
 }

@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class TextFieldSubquestion extends Subquestion {
+@EqualsAndHashCode
+public class TextFieldSubquestion implements Subquestion {
     private TextField value;
     private String feedback;
 }

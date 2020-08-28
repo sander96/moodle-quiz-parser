@@ -1,18 +1,20 @@
 package dev.rednas.moodle.question.match;
 
-import dev.rednas.moodle.quiz.QuizParser;
-import dev.rednas.moodle.question.info.GradeState;
 import dev.rednas.moodle.question.GradedQuestion;
 import dev.rednas.moodle.question.common.input.InputWithText;
 import dev.rednas.moodle.question.common.input.dropdown.Dropdown;
+import dev.rednas.moodle.question.info.GradeState;
 import dev.rednas.moodle.quiz.Quiz;
+import dev.rednas.moodle.quiz.QuizParser;
 import dev.rednas.moodle.util.AssertionUtils;
 import dev.rednas.moodle.util.TestUtils;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class MatchQuestionTest {
 
@@ -124,4 +126,8 @@ class MatchQuestionTest {
         AssertionUtils.assertDropdownOptions(dropdown2, 4, options);
     }
 
+    @Test
+    void testEquals() {
+        EqualsVerifier.simple().forClass(MatchQuestion.class).verify();
+    }
 }
