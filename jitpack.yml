@@ -3,4 +3,4 @@ jdk:
 install:
   - ./gradlew clean
   - ./gradlew setupMoodleLangpacks
-  - ./gradlew install
+  - ./gradlew -xtest install
