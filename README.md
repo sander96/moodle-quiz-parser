@@ -1,6 +1,6 @@
 # Moodle quiz parser
 
-Some questions require JS to be disabled.
+[![codecov](https://codecov.io/gh/sander96/moodle-quiz-parser/branch/develop/graph/badge.svg)](https://codecov.io/gh/sander96/moodle-quiz-parser)
 
 ## Dev environment setup
 
