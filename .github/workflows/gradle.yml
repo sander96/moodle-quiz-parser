@@ -30,7 +30,7 @@ jobs:
           key: ${{ runner.os }}-langpack
 
       - name: Download Moodle localization files
-        if: steps.cache-moodle-localization-files.cache-hit != 'true'
+        if: steps.cache-moodle-localization-files.outputs.cache-hit != 'true'
         run: ./gradlew setupMoodleLangpacks
 
       - name: Build
