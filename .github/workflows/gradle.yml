@@ -26,11 +26,11 @@ jobs:
         id: cache-moodle-localization-files
         uses: actions/cache@v2
         with:
-          path: src/main/resources/langpack
+          path: ./src/main/resources/langpack
           key: ${{ runner.os }}-langpack
 
       - name: Download Moodle localization files
-        if: steps.cache-moodle-localization-files.cache.hit != 'true'
+        if: steps.cache-moodle-localization-files.cache-hit != 'true'
         run: ./gradlew setupMoodleLangpacks
 
       - name: Build
