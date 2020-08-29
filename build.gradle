@@ -1,9 +1,10 @@
 plugins {
     id 'java'
     id 'idea'
-    id 'io.freefair.lombok' version "5.1.1"
+    id 'io.freefair.lombok' version '5.1.1'
     id 'name.remal.check-dependency-updates' version '1.0.211'
     id 'maven'
+    id 'jacoco'
 }
 
 group 'dev.rednas.moodle'
@@ -33,5 +34,15 @@ test {
 jar {
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+jacocoTestReport {
+    dependsOn test
+
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
     }
 }
